@@ -66,3 +66,8 @@
 .projects-background {
   background: var(--gradient-projects);
 }
+
+.blur-background {
+  background-color: #00000099;
+  backdrop-filter: blur(60px);
+}

@@ -19,6 +19,7 @@ const Home = () => {
       </Head>
       <NavigationBar />
       <main className="">
+        <Image src="/../public/images/test-image.jpg" alt="Hero" width={1920} height={1080} />
       </main>
     </>
   )

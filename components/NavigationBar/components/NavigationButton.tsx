@@ -22,11 +22,10 @@ const NavigationButton: React.FC<NavigationButtonProps> = ({ className, children
     
     return (
         <Tooltip content={`${name}·${shortcut}`}>
-            <button className={twMerge(`flex h-10 w-10 rounded-2xl items-center justify-center bg-[var(--bg-sub)]
+            <button className={twMerge(`flex h-10 w-10 rounded-2xl items-center justify-center bg-[var(--bg-sub)]\
             border-[1.5px] ${active ? "border-[var(--bg-border-strong)]" : "border-transparent"}\
             hover:${active ? "bg-[var(--bg-shade)]" : "bg-[var(--bg-shade)]"}\
-            active:scale-90\
-            transition duration-150 ease-out`, className)}
+            active:scale-90 transition duration-150 ease-out`, className)}
             onClick={handleClick}>
                 <div className={`h-6 w-6 ${active ? "text-[var(--label-title)]" : "text-[var(--label-muted)]"}`}>{children}</div>
             </button>

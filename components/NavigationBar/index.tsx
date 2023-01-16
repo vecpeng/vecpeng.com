@@ -48,8 +48,8 @@ const NavigationBar = () => {
     }
 
     return (
-        <footer className="flex w-screnn h-screen justify-center items-center select-none">
-            <div className="flex gap-3 p-3 bg-black rounded-[28px] border-[0.5px] border-[var(--bg-border)]">
+        <footer className="flex w-screen bottom-4 fixed mx-auto justify-center items-center select-none">
+            <div className="flex gap-3 p-3 blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)]">
                 <NavigationButton name="Home" shortcut="1" isPage={true} active={isHomeActive} className={`${isHomeActive ? "home-background" : ""}`} onNavButtonClick={handleButtonClick}>
                     <HomeIcon />
                 </NavigationButton>
