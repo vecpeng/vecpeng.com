@@ -49,8 +49,8 @@ const NavigationBar = () => {
     }
 
     return (
-        <footer className="fixed flex w-full h-full items-center justify-center">
-            <ScrollArea.Root type="scroll" scrollHideDelay={600} className="flex-1 mx-4 max-w-lg h-16 select-none blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)] z-20 overflow-hidden">
+        <footer className="fixed flex w-full h-full items-center justify-center z-20">
+            <ScrollArea.Root type="scroll" scrollHideDelay={600} className="flex-1 mx-4 max-w-lg h-16 select-none blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)] overflow-hidden">
                 <ScrollArea.Viewport>
                     <div className="flex gap-3 p-3 " >
                         <NavigationButton name="Home" shortcut="1" isPage={true} active={isHomeActive} className={`${isHomeActive ? "home-background" : ""}`} onNavButtonClick={handleButtonClick}>

@@ -18,8 +18,8 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavigationBar />
-      <main className="">
-        <Image src="/../public/images/demo-pic.jpg" alt="Hero" width={1920} height={1080} />
+      <main className="flex w-screen h-screen z-10">
+        <Image src="/../public/images/demo-pic.jpg" alt="Hero" fill />
       </main>
     </>
   )
