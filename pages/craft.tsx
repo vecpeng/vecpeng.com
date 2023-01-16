@@ -1,5 +1,7 @@
-export default function Craft() {
+const Craft = () => {
     return (
         <div>Craft</div>
     )
 }
+
+export default Craft;

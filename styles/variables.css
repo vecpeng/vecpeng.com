@@ -1,45 +1,48 @@
 :root {
-    --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-      'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-      'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
-    /* colors */
-    --bg-base: #121212;
-    --bg-sub: #181818;
-    --bg-shade: #232323;
-    --bg-border: #222222;
-    --bg-border-strong: #404040;
+  /* colors */
+  --bg-base: #121212;
+  --bg-sub: #181818;
+  --bg-shade: #232323;
+  --bg-border: #282828;
+  --bg-border-strong: #404040;
 
-    --label-title: #FFFFFF;
-    --label-base: #E1E1E1;
-    --label-muted: #9A9A9A;
-    --label-faint: #404040;
+  --label-title: #FFFFFF;
+  --label-base: #E1E1E1;
+  --label-muted: #9A9A9A;
+  --label-faint: rgba
 
-    /* shadows */
-    --shadow-low: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.2);
-    --shadow-medium: 0px 4px 10px rgba(0, 0, 0, 0.2), 0px 1px 4px rgba(0, 0, 0, 0.2);
-    --shadow-high: 0px 8px 32px rgba(0, 0, 0, 0.2), 0px 2px 20px rgba(0, 0, 0, 0.2);
-    --shadow-float: 0px 24px 60px rgba(0, 0, 0, 0.2), 0px 8px 20px rgba(0, 0, 0, 0.2);
-  }
+
+  /* shadows */
+  --shadow-low: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.2);
+  --shadow-medium: 0px 4px 10px rgba(0, 0, 0, 0.2), 0px 1px 4px rgba(0, 0, 0, 0.2);
+  --shadow-high: 0px 8px 32px rgba(0, 0, 0, 0.2), 0px 2px 20px rgba(0, 0, 0, 0.2);
+  --shadow-float: 0px 24px 60px rgba(0, 0, 0, 0.2), 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
   
-  @media (prefers-color-scheme: dark) {
-    :root {
-        /* colors */
-        --bg-base: #121212;
-        --bg-sub: #181818;
-        --bg-shade: #232323;
-        --bg-border: #222222;
-        --bg-border-strong: #404040;
-    
-        --label-title: #FFFFFF;
-        --label-base: #E1E1E1;
-        --label-muted: #9A9A9A;
-        --label-faint: #404040;
+@media (prefers-color-scheme: dark) {
+  :root {
+      /* colors */
+      --bg-base: #121212;
+      --bg-sub: #181818;
+      --bg-shade: #232323;
+      --bg-border: #282828;
+      --bg-border-strong: #404040;
+  
+      --label-title: #FFFFFF;
+      --label-base: #E1E1E1;
+      --label-muted: #9A9A9A;
+      --label-faint: rgba
 
-        /* shadows */
-        --shadow-low: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.2);
-        --shadow-medium: 0px 4px 10px rgba(0, 0, 0, 0.2), 0px 1px 4px rgba(0, 0, 0, 0.2);
-        --shadow-high: 0px 8px 32px rgba(0, 0, 0, 0.2), 0px 2px 20px rgba(0, 0, 0, 0.2);
-        --shadow-float: 0px 24px 60px rgba(0, 0, 0, 0.2), 0px 8px 20px rgba(0, 0, 0, 0.2);
-    }
+      --custom-
+
+      /* shadows */
+      --shadow-low: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.2);
+      --shadow-medium: 0px 4px 10px rgba(0, 0, 0, 0.2), 0px 1px 4px rgba(0, 0, 0, 0.2);
+      --shadow-high: 0px 8px 32px rgba(0, 0, 0, 0.2), 0px 2px 20px rgba(0, 0, 0, 0.2);
+      --shadow-float: 0px 24px 60px rgba(0, 0, 0, 0.2), 0px 8px 20px rgba(0, 0, 0, 0.2);
   }
+}

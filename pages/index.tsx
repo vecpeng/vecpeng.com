@@ -1,13 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import NavigationBar from '@/components/NavigationBar'
+import Head from "next/head"
+import Image from "next/image"
+import { Inter } from "@next/font/google"
+import NavigationBar from "@/components/NavigationBar"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] })
 
-export default function Home() {
-  const title = 'Dott\'s Blog'
-  const description = 'A blog about writing, projects, and craft.'
+const Home = () => {
+  const title = "Dott\"s Blog"
+  const description = "A blog about writing, projects, and craft."
 
   return (
     <>
@@ -22,4 +22,6 @@ export default function Home() {
       </main>
     </>
   )
-}
+};
+
+export default Home;

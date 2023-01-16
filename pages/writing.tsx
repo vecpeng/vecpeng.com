@@ -1,5 +1,7 @@
-export default function Writing() {
+const Writing = () => {
     return (
         <div>Writing</div>
     )
-}
+};
+
+export default Writing;
