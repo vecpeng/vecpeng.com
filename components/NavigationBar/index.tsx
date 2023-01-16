@@ -23,32 +23,32 @@ const NavigationBar = () => {
     const [isCraftActive, setIsCraftActive] = useState(false);
     const [isWritingActive, setIsWritingActive] = useState(false);
     const [isProjectsActive, setIsProjectsActive] = useState(false);
-    const handleButtonClick = (name: string, active: boolean) => {
+    const handleButtonClick = (name: string) => {
         if (name === "Home") {
-            setIsHomeActive(active);
+            setIsHomeActive(true);
             setIsCraftActive(false);
             setIsWritingActive(false);
             setIsProjectsActive(false);
         } else if (name === "Craft") {
             setIsHomeActive(false);
-            setIsCraftActive(active);
+            setIsCraftActive(true);
             setIsWritingActive(false);
             setIsProjectsActive(false);
         } else if (name === "Writing") {
             setIsHomeActive(false);
             setIsCraftActive(false);
-            setIsWritingActive(active);
+            setIsWritingActive(true);
             setIsProjectsActive(false);
         } else if (name === "Projects") {
             setIsHomeActive(false);
             setIsCraftActive(false);
             setIsWritingActive(false);
-            setIsProjectsActive(active);
+            setIsProjectsActive(true);
         }
     }
 
     return (
-        <footer className="flex w-screnn h-screen justify-center items-center">
+        <footer className="flex w-screnn h-screen justify-center items-center select-none">
             <div className="flex gap-3 p-3 bg-black rounded-[28px] border-[0.5px] border-[var(--bg-border)]">
                 <NavigationButton name="Home" shortcut="1" isPage={true} active={isHomeActive} className={`${isHomeActive ? "home-background" : ""}`} onNavButtonClick={handleButtonClick}>
                     <HomeIcon />

@@ -7,7 +7,7 @@ interface NavigationButtonProps extends React.AllHTMLAttributes<HTMLDivElement> 
     children: React.ReactNode;
     name: string;
     shortcut: string;
-    onNavButtonClick: (name: string, active: boolean) => void;
+    onNavButtonClick: (name: string) => void;
     isPage?: boolean;
     active?: boolean;
 }
@@ -17,7 +17,7 @@ const NavigationButton: React.FC<NavigationButtonProps> = ({ className, children
         if (!isPage) {
             return;
         }
-        onNavButtonClick(name, !active);
+        onNavButtonClick(name);
     }
     
     return (
