@@ -1,16 +1,17 @@
 import React, { useState } from "react";
+import * as ScrollArea from "@radix-ui/react-scroll-area";
 import NavigationButton from "./components/NavigationButton";
-import HomeIcon from "@/public/icons/home.svg"
-import CraftIcon from "@/public/icons/paint.svg"
-import WritingIcon from "@/public/icons/article.svg"
-import FolderCloseIcon from "@/public/icons/folderClose.svg"
-import FolderOpenIcon from "@/public/icons/folderOpen.svg"
-import TwitterIcon from "@/public/icons/twitter.svg"
-import GithubIcon from "@/public/icons/github.svg"
-import MailIcon from "@/public/icons/mail.svg"
-import SpotifyIcon from "@/public/icons/spotify.svg"
-import ThemeDarkIcon from "@/public/icons/themeDark.svg"
-import ThemeLightIcon from "@/public/icons/themeLight.svg"
+import HomeIcon from "@/public/icons/home.svg";
+import CraftIcon from "@/public/icons/paint.svg";
+import WritingIcon from "@/public/icons/article.svg";
+import FolderCloseIcon from "@/public/icons/folderClose.svg";
+import FolderOpenIcon from "@/public/icons/folderOpen.svg";
+import TwitterIcon from "@/public/icons/twitter.svg";
+import GithubIcon from "@/public/icons/github.svg";
+import MailIcon from "@/public/icons/mail.svg";
+import SpotifyIcon from "@/public/icons/spotify.svg";
+import ThemeDarkIcon from "@/public/icons/themeDark.svg";
+import ThemeLightIcon from "@/public/icons/themeLight.svg";
 
 const NavDivider = () => {
     return (
@@ -48,38 +49,45 @@ const NavigationBar = () => {
     }
 
     return (
-        <footer className="flex w-screen bottom-4 fixed mx-auto justify-center items-center select-none">
-            <div className="flex gap-3 p-3 blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)]">
-                <NavigationButton name="Home" shortcut="1" isPage={true} active={isHomeActive} className={`${isHomeActive ? "home-background" : ""}`} onNavButtonClick={handleButtonClick}>
-                    <HomeIcon />
-                </NavigationButton>
-                <NavigationButton name="Craft" shortcut="2" isPage={true} active={isCraftActive} className={`${isCraftActive ? "craft-background" : ""}`} onNavButtonClick={handleButtonClick}>
-                    <CraftIcon />
-                </NavigationButton>
-                <NavigationButton name="Writing" shortcut="3" isPage={true} active={isWritingActive} className={`${isWritingActive ? "writing-background" : ""}`} onNavButtonClick={handleButtonClick}>
-                    <WritingIcon />
-                </NavigationButton>
-                <NavigationButton name="Projects" shortcut="4" isPage={true} active={isProjectsActive} className={`${isProjectsActive ? "projects-background" : ""}`} onNavButtonClick={handleButtonClick}>
-                    {isProjectsActive ? <FolderOpenIcon /> : <FolderCloseIcon />}
-                </NavigationButton>
-                {NavDivider()}
-                <NavigationButton name="Twitter" shortcut="5" onNavButtonClick={handleButtonClick}>
-                    <TwitterIcon />
-                </NavigationButton>
-                <NavigationButton name="Github" shortcut="6" onNavButtonClick={handleButtonClick}>
-                    <GithubIcon />
-                </NavigationButton>
-                <NavigationButton name="Mail" shortcut="7" onNavButtonClick={handleButtonClick}>
-                    <MailIcon />
-                </NavigationButton>
-                {NavDivider()}
-                <NavigationButton name="Spotify" shortcut="8" onNavButtonClick={handleButtonClick}>
-                    <SpotifyIcon />
-                </NavigationButton>
-                <NavigationButton name="Theme" shortcut="9" onNavButtonClick={handleButtonClick}>
-                    <ThemeDarkIcon />
-                </NavigationButton>
-            </div>
+        <footer className="fixed flex w-full h-full items-center justify-center">
+            <ScrollArea.Root type="scroll" scrollHideDelay={600} className="flex-1 mx-4 max-w-lg h-16 select-none blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)] z-20 overflow-hidden">
+                <ScrollArea.Viewport>
+                    <div className="flex gap-3 p-3 " >
+                        <NavigationButton name="Home" shortcut="1" isPage={true} active={isHomeActive} className={`${isHomeActive ? "home-background" : ""}`} onNavButtonClick={handleButtonClick}>
+                            <HomeIcon />
+                        </NavigationButton>
+                        <NavigationButton name="Craft" shortcut="2" isPage={true} active={isCraftActive} className={`${isCraftActive ? "craft-background" : ""}`} onNavButtonClick={handleButtonClick}>
+                            <CraftIcon />
+                        </NavigationButton>
+                        <NavigationButton name="Writing" shortcut="3" isPage={true} active={isWritingActive} className={`${isWritingActive ? "writing-background" : ""}`} onNavButtonClick={handleButtonClick}>
+                            <WritingIcon />
+                        </NavigationButton>
+                        <NavigationButton name="Projects" shortcut="4" isPage={true} active={isProjectsActive} className={`${isProjectsActive ? "projects-background" : ""}`} onNavButtonClick={handleButtonClick}>
+                            {isProjectsActive ? <FolderOpenIcon /> : <FolderCloseIcon />}
+                        </NavigationButton>
+                        {NavDivider()}
+                        <NavigationButton name="Twitter" shortcut="5" onNavButtonClick={handleButtonClick}>
+                            <TwitterIcon />
+                        </NavigationButton>
+                        <NavigationButton name="Github" shortcut="6" onNavButtonClick={handleButtonClick}>
+                            <GithubIcon />
+                        </NavigationButton>
+                        <NavigationButton name="Mail" shortcut="7" onNavButtonClick={handleButtonClick}>
+                            <MailIcon />
+                        </NavigationButton>
+                        {NavDivider()}
+                        <NavigationButton name="Spotify" shortcut="8" onNavButtonClick={handleButtonClick}>
+                            <SpotifyIcon />
+                        </NavigationButton>
+                        <NavigationButton name="Theme" shortcut="9" onNavButtonClick={handleButtonClick}>
+                            <ThemeDarkIcon />
+                        </NavigationButton>
+                    </div>
+                </ScrollArea.Viewport>
+                <ScrollArea.Scrollbar orientation="horizontal" className="flex mx-6 h-[6px] active:h-[12px] transition duration-300 ease-out">
+                    <ScrollArea.Thumb className="bg-[var(--label-faint)] rounded-full opacity-60 transition duration-150 ease-out"/>
+                </ScrollArea.Scrollbar>
+            </ScrollArea.Root>
         </footer>
     )
 };

@@ -15,6 +15,8 @@
   --label-muted: #9A9A9A;
   --label-faint: #404040;
 
+  --blur-base: #00000099;
+
   --gradient-home: linear-gradient(225deg, #003A30 0%, rgba(0, 0, 0, 0) 100%), #181818;
   --gradient-craft: linear-gradient(225deg, #403200 0%, rgba(0, 0, 0, 0) 100%), #181818;
   --gradient-writing: linear-gradient(225deg, #002660 0%, rgba(0, 0, 0, 0) 100%), #181818;
@@ -46,6 +48,8 @@
       --gradient-writing: linear-gradient(225deg, #002660 0%, rgba(0, 0, 0, 0) 100%), #181818;
       --gradient-projects: linear-gradient(225deg, #481100 0%, rgba(0, 0, 0, 0) 100%), #181818;
 
+      --blur-base: #00000099;
+
       /* shadows */
       --shadow-low: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.2);
       --shadow-medium: 0px 4px 10px rgba(0, 0, 0, 0.2), 0px 1px 4px rgba(0, 0, 0, 0.2);
@@ -68,6 +72,6 @@
 }
 
 .blur-background {
-  background-color: #00000099;
-  backdrop-filter: blur(60px);
+  background-color: var(--blur-base);
+  backdrop-filter: blur(16px);
 }
