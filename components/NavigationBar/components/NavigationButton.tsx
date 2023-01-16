@@ -1,24 +1,36 @@
-import React, { useState } from "react";
-import * as Tooltip from "@radix-ui/react-tooltip"
+import React, { useEffect, useState } from "react";
+import Tooltip from "@/components/UIElements/Tooltip";
+import { twMerge } from 'tailwind-merge'
 
 interface NavigationButtonProps extends React.AllHTMLAttributes<HTMLDivElement> {
+    className?: string;
     children: React.ReactNode;
-    activeColor?: string;
+    name: string;
+    shortcut: string;
+    onNavButtonClick: (name: string, active: boolean) => void;
+    isPage?: boolean;
+    active?: boolean;
 }
 
-const NavigationButton: React.FC<NavigationButtonProps> = ({ children, activeColor }) => {
-    const [active, setActive] = useState(false);
-
+const NavigationButton: React.FC<NavigationButtonProps> = ({ className, children, name, shortcut, onNavButtonClick, isPage=false, active=false }) => {
+    const handleClick = () => {
+        if (!isPage) {
+            return;
+        }
+        onNavButtonClick(name, !active);
+    }
+    
     return (
-        <button className={`flex h-10 w-10 rounded-2xl items-center justify-center
-                            ${active ? activeColor ? `bg-[var(${activeColor})]` : "bg-[var(--bg-sub)]" : "bg-[var(--bg-sub)]"}
-                            border-[1.5px] ${active ? "border-[var(--bg-border-strong)]" : "border-transparent"}
-                            hover:${active ? "bg-[var(--bg-shade)]" : "bg-[var(--bg-shade)]"} 
-                            active:scale-90 
-                            transition duration-150 ease-out`}
-                onClick={() => setActive(!active)}>
-            <div className={`h-6 w-6 ${active ? "text-[var(--label-title)]" : "text-[var(--label-muted)]"}`}>{children}</div>
-        </button>
+        <Tooltip content={`${name}·${shortcut}`}>
+            <button className={twMerge(`flex h-10 w-10 rounded-2xl items-center justify-center bg-[var(--bg-sub)]
+            border-[1.5px] ${active ? "border-[var(--bg-border-strong)]" : "border-transparent"}\
+            hover:${active ? "bg-[var(--bg-shade)]" : "bg-[var(--bg-shade)]"}\
+            active:scale-90\
+            transition duration-150 ease-out`, className)}
+            onClick={handleClick}>
+                <div className={`h-6 w-6 ${active ? "text-[var(--label-title)]" : "text-[var(--label-muted)]"}`}>{children}</div>
+            </button>
+        </Tooltip>
     )
 };
 

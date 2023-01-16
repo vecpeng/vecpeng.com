@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import NavigationButton from "./components/NavigationButton";
 import HomeIcon from "@/public/icons/home.svg"
 import CraftIcon from "@/public/icons/paint.svg"
@@ -18,36 +19,64 @@ const NavDivider = () => {
 }
 
 const NavigationBar = () => {
+    const [isHomeActive, setIsHomeActive] = useState(true);
+    const [isCraftActive, setIsCraftActive] = useState(false);
+    const [isWritingActive, setIsWritingActive] = useState(false);
+    const [isProjectsActive, setIsProjectsActive] = useState(false);
+    const handleButtonClick = (name: string, active: boolean) => {
+        if (name === "Home") {
+            setIsHomeActive(active);
+            setIsCraftActive(false);
+            setIsWritingActive(false);
+            setIsProjectsActive(false);
+        } else if (name === "Craft") {
+            setIsHomeActive(false);
+            setIsCraftActive(active);
+            setIsWritingActive(false);
+            setIsProjectsActive(false);
+        } else if (name === "Writing") {
+            setIsHomeActive(false);
+            setIsCraftActive(false);
+            setIsWritingActive(active);
+            setIsProjectsActive(false);
+        } else if (name === "Projects") {
+            setIsHomeActive(false);
+            setIsCraftActive(false);
+            setIsWritingActive(false);
+            setIsProjectsActive(active);
+        }
+    }
+
     return (
         <footer className="flex w-screnn h-screen justify-center items-center">
             <div className="flex gap-3 p-3 bg-black rounded-[28px] border-[0.5px] border-[var(--bg-border)]">
-                <NavigationButton>
+                <NavigationButton name="Home" shortcut="1" isPage={true} active={isHomeActive} className={`${isHomeActive ? "home-background" : ""}`} onNavButtonClick={handleButtonClick}>
                     <HomeIcon />
                 </NavigationButton>
-                <NavigationButton>
+                <NavigationButton name="Craft" shortcut="2" isPage={true} active={isCraftActive} className={`${isCraftActive ? "craft-background" : ""}`} onNavButtonClick={handleButtonClick}>
                     <CraftIcon />
                 </NavigationButton>
-                <NavigationButton>
+                <NavigationButton name="Writing" shortcut="3" isPage={true} active={isWritingActive} className={`${isWritingActive ? "writing-background" : ""}`} onNavButtonClick={handleButtonClick}>
                     <WritingIcon />
                 </NavigationButton>
-                <NavigationButton>
-                    <FolderCloseIcon />
+                <NavigationButton name="Projects" shortcut="4" isPage={true} active={isProjectsActive} className={`${isProjectsActive ? "projects-background" : ""}`} onNavButtonClick={handleButtonClick}>
+                    {isProjectsActive ? <FolderOpenIcon /> : <FolderCloseIcon />}
                 </NavigationButton>
                 {NavDivider()}
-                <NavigationButton>
+                <NavigationButton name="Twitter" shortcut="5" onNavButtonClick={handleButtonClick}>
                     <TwitterIcon />
                 </NavigationButton>
-                <NavigationButton>
+                <NavigationButton name="Github" shortcut="6" onNavButtonClick={handleButtonClick}>
                     <GithubIcon />
                 </NavigationButton>
-                <NavigationButton>
+                <NavigationButton name="Mail" shortcut="7" onNavButtonClick={handleButtonClick}>
                     <MailIcon />
                 </NavigationButton>
                 {NavDivider()}
-                <NavigationButton>
+                <NavigationButton name="Spotify" shortcut="8" onNavButtonClick={handleButtonClick}>
                     <SpotifyIcon />
                 </NavigationButton>
-                <NavigationButton>
+                <NavigationButton name="Theme" shortcut="9" onNavButtonClick={handleButtonClick}>
                     <ThemeDarkIcon />
                 </NavigationButton>
             </div>

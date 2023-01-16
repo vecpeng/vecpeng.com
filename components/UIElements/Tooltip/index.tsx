@@ -1,11 +1,39 @@
-import * as TooltipUI from "@radix-ui/react-tooltip"
+import * as TooltipUI from "@radix-ui/react-tooltip";
+import React, { Children } from "react";
+import CommandIcon from "@/public/icons/command.svg";
 
-const Tooltip = () => {
+interface TooltipProps extends React.AllHTMLAttributes<HTMLDivElement> {
+    children: React.ReactElement;
+    content: string;
+}
+
+const Tooltip: React.FC<TooltipProps> = ({ children, content, ...props }) => {
+
+    const name = content.split("·")[0];
+    const shortcut = content.split("·")[1];
+
     return (
-        <footer className="flex w-screnn h-screen justify-center items-center">
-            Craft 软件技艺
-        </footer>
+        <TooltipUI.Root {...props}>
+            <TooltipUI.Trigger asChild>
+                {children}
+            </TooltipUI.Trigger>
+            <TooltipUI.Portal>
+                <TooltipUI.Content className="flex px-3 py-2 gap-2 items-center font-normal text-xs text-[var(--label-muted)] bg-[var(--bg-base)] border border-[var(--bg-border)] rounded-lg shadow-lg duration-300 ease-out transition select-none z-50" sideOffset={20}>
+                    <span>{name}</span>
+                    <span>·</span>
+                    <div className="flex items-center gap-[6px]">
+                        <div className="flex items-center justify-center h-5 w-5 bg-[var(--bg-shade)] rounded">
+                            <CommandIcon className="h-4 w-4" />
+                        </div>
+                        <div className="flex items-center justify-center h-5 px-[6px] bg-[var(--bg-shade)] rounded">
+                            {shortcut}
+                        </div>
+                    </div>
+                    
+                </TooltipUI.Content>
+            </TooltipUI.Portal>
+        </TooltipUI.Root>
     )
 }
 
-export default Tooltip
+export default Tooltip;
