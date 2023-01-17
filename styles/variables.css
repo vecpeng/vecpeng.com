@@ -22,6 +22,8 @@
 
   --gradient-divider: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
 
+  --spotify: #65d46e;
+
   --blur-base: #00000099;
 
   /* shadows */
@@ -43,6 +45,8 @@
   --label-base: #1C1C1C;
   --label-muted: #888888;
   --label-faint: #BEBEBE;
+
+  --spotify: #1DB954;
 
   --blur-base: #FFFFFF99;
 

@@ -19,7 +19,7 @@ const Home = () => {
       </Head>
       <NavigationBar />
       <main className="flex w-screen h-screen z-10">
-        <Image src="/images/demo-pic.jpg" alt="Hero" fill />
+        {/* <Image src="/images/demo-pic.jpg" alt="Hero" fill /> */}
       </main>
     </>
   )

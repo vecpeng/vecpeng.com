@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Tooltip from "@/components/UIElements/Tooltip";
-import { twMerge } from 'tailwind-merge'
+import { twMerge } from "tailwind-merge";
 
 interface NavigationButtonProps extends React.AllHTMLAttributes<HTMLDivElement> {
     className?: string;
