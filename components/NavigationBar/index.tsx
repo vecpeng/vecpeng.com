@@ -67,7 +67,7 @@ const NavigationBar = () => {
 
     return (
         <footer className="fixed flex w-full h-full items-center justify-center z-20">
-            <ScrollArea.Root type="scroll" scrollHideDelay={600} className="flex-1 mx-4 max-w-[456px] sm:max-w-lg h-16 select-none blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)] overflow-hidden">
+            <ScrollArea.Root type="scroll" scrollHideDelay={600} className="flex-1 mx-4 max-w-[456px] min-[560px]:max-w-[512px] h-16 select-none blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)] overflow-hidden">
                 <ScrollArea.Viewport>
                     <div className="flex gap-3 p-3">
                         <NavigationButton name="Home" shortcut="1" isPage={true} active={isHomeActive} className={`${isHomeActive ? "home-background" : ""}`} onNavButtonClick={handleButtonClick}>
@@ -93,8 +93,8 @@ const NavigationBar = () => {
                             <MailIcon />
                         </NavigationButton>
                         {NavDivider()}
-                        <NavigationButton className="" name="Spotify" shortcut="8" onNavButtonClick={handleButtonClick}>
-                            <SpotifyIcon className={`${isSpotifyPlaying ? "sm:text-[var(--spotify)]" : ""}`} />
+                        <NavigationButton className="max-[559px]:hidden" name="Spotify" shortcut="8" onNavButtonClick={handleButtonClick}>
+                            <SpotifyIcon className={`${isSpotifyPlaying ? "min-[560px]:text-[var(--spotify)]" : ""}`} />
                         </NavigationButton>
                         <NavigationButton name="Theme" shortcut="9" onNavButtonClick={handleButtonClick}>
                             {theme === "dark" ? <ThemeDarkIcon /> : <ThemeLightIcon />}
@@ -106,7 +106,7 @@ const NavigationBar = () => {
                 </ScrollArea.Scrollbar>
             </ScrollArea.Root>
             {isSpotifyPlaying ? (
-                    <div className="relative right-[92px] -top-6 h-0 w-0 invisible sm:visible">
+                    <div className="relative right-[92px] -top-6 h-0 w-0 invisible min-[560px]:visible">
                         <MusicOneIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-1 opacity-0"/>
                         <MusicTwoIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-2  opacity-0 animation-delay-300"/>
                         <MusicOneIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-3  opacity-0 animation-delay-600"/>
