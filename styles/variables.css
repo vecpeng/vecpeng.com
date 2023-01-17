@@ -15,12 +15,14 @@
   --label-muted: #9A9A9A;
   --label-faint: #404040;
 
-  --blur-base: #00000099;
-
   --gradient-home: linear-gradient(225deg, #003A30 0%, rgba(0, 0, 0, 0) 100%), #181818;
   --gradient-craft: linear-gradient(225deg, #403200 0%, rgba(0, 0, 0, 0) 100%), #181818;
   --gradient-writing: linear-gradient(225deg, #002660 0%, rgba(0, 0, 0, 0) 100%), #181818;
   --gradient-projects: linear-gradient(225deg, #481100 0%, rgba(0, 0, 0, 0) 100%), #181818;
+
+  --gradient-divider: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+
+  --blur-base: #00000099;
 
   /* shadows */
   --shadow-low: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.2);
@@ -29,33 +31,33 @@
   --shadow-float: 0px 24px 60px rgba(0, 0, 0, 0.2), 0px 8px 20px rgba(0, 0, 0, 0.2);
 }
   
-@media (prefers-color-scheme: dark) {
-  :root {
-      /* colors */
-      --bg-base: #121212;
-      --bg-sub: #181818;
-      --bg-shade: #232323;
-      --bg-border: #282828;
-      --bg-border-strong: #404040;
-  
-      --label-title: #FFFFFF;
-      --label-base: #E1E1E1;
-      --label-muted: #9A9A9A;
-      --label-faint: #404040;
+[data-theme="light"] {
+  /* colors */
+  --bg-base: #FFFFFF;
+  --bg-sub: #F2F2F2;
+  --bg-shade: #E9E9E9;
+  --bg-border: #CCCCCC;
+  --bg-border-strong: #666666;
 
-      --gradient-home: linear-gradient(225deg, #003A30 0%, rgba(0, 0, 0, 0) 100%), #181818;
-      --gradient-craft: linear-gradient(225deg, #403200 0%, rgba(0, 0, 0, 0) 100%), #181818;
-      --gradient-writing: linear-gradient(225deg, #002660 0%, rgba(0, 0, 0, 0) 100%), #181818;
-      --gradient-projects: linear-gradient(225deg, #481100 0%, rgba(0, 0, 0, 0) 100%), #181818;
+  --label-title: #121212;
+  --label-base: #1C1C1C;
+  --label-muted: #888888;
+  --label-faint: #BEBEBE;
 
-      --blur-base: #00000099;
+  --blur-base: #FFFFFF99;
 
-      /* shadows */
-      --shadow-low: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.2);
-      --shadow-medium: 0px 4px 10px rgba(0, 0, 0, 0.2), 0px 1px 4px rgba(0, 0, 0, 0.2);
-      --shadow-high: 0px 8px 32px rgba(0, 0, 0, 0.2), 0px 2px 20px rgba(0, 0, 0, 0.2);
-      --shadow-float: 0px 24px 60px rgba(0, 0, 0, 0.2), 0px 8px 20px rgba(0, 0, 0, 0.2);
-  }
+  --gradient-home: linear-gradient(225deg, #91FFEB 0%, rgba(255, 255, 255, 0) 100%), #F2F2F2;
+  --gradient-craft: linear-gradient(225deg, #FFE78F 0%, rgba(255, 255, 255, 0) 100%), #F2F2F2;
+  --gradient-writing: linear-gradient(225deg, #8AB9FF 0%, rgba(255, 255, 255, 0) 100%), #F2F2F2;
+  --gradient-projects: linear-gradient(225deg, #FFB199 0%, rgba(255, 255, 255, 0) 100%), #F2F2F2;
+
+  --gradient-divider: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
+
+  /* shadows */
+  --shadow-low: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.2);
+  --shadow-medium: 0px 4px 10px rgba(0, 0, 0, 0.2), 0px 1px 4px rgba(0, 0, 0, 0.2);
+  --shadow-high: 0px 8px 32px rgba(0, 0, 0, 0.2), 0px 2px 20px rgba(0, 0, 0, 0.2);
+  --shadow-float: 0px 24px 60px rgba(0, 0, 0, 0.2), 0px 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .home-background {
@@ -70,8 +72,11 @@
 .projects-background {
   background: var(--gradient-projects);
 }
+.diveder-background {
+  background: var(--gradient-divider);
+}
 
 .blur-background {
   background-color: var(--blur-base);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTheme } from "next-themes";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import NavigationButton from "./components/NavigationButton";
 import HomeIcon from "@/public/icons/home.svg";
@@ -15,11 +16,12 @@ import ThemeLightIcon from "@/public/icons/themeLight.svg";
 
 const NavDivider = () => {
     return (
-        <div className="flex h-10 w-px bg-gradient-to-b from-transparent dark:via-[#FFFFFF99] via-[00000099] to-transparent opacity-40"></div>
+        <div className="flex h-10 w-px diveder-background opacity-60"></div>
     )
 }
 
 const NavigationBar = () => {
+    const { theme, setTheme } = useTheme();
     const [isHomeActive, setIsHomeActive] = useState(true);
     const [isCraftActive, setIsCraftActive] = useState(false);
     const [isWritingActive, setIsWritingActive] = useState(false);
@@ -45,12 +47,22 @@ const NavigationBar = () => {
             setIsCraftActive(false);
             setIsWritingActive(false);
             setIsProjectsActive(true);
+        } else if (name === "Theme") {
+            handleThemeSwitch();
+            console.log("Theme set to: " + `${theme === "dark" ? "light" : "dark"}`)
+        }
+    }
+    const handleThemeSwitch = () => {
+        if (theme === "dark") {
+            setTheme("light");
+        } else {
+            setTheme("dark");
         }
     }
 
     return (
         <footer className="fixed flex w-full h-full items-center justify-center z-20">
-            <ScrollArea.Root type="scroll" scrollHideDelay={600} className="flex-1 mx-4 max-w-lg h-16 select-none blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)] overflow-x-hidden">
+            <ScrollArea.Root type="scroll" scrollHideDelay={600} className="flex-1 mx-4 max-w-lg h-16 select-none blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)] overflow-hidden">
                 <ScrollArea.Viewport>
                     <div className="flex gap-3 p-3 " >
                         <NavigationButton name="Home" shortcut="1" isPage={true} active={isHomeActive} className={`${isHomeActive ? "home-background" : ""}`} onNavButtonClick={handleButtonClick}>
@@ -80,12 +92,12 @@ const NavigationBar = () => {
                             <SpotifyIcon />
                         </NavigationButton>
                         <NavigationButton name="Theme" shortcut="9" onNavButtonClick={handleButtonClick}>
-                            <ThemeDarkIcon />
+                            {theme === "dark" ? <ThemeDarkIcon /> : <ThemeLightIcon />}
                         </NavigationButton>
                     </div>
                 </ScrollArea.Viewport>
                 <ScrollArea.Scrollbar orientation="horizontal" className="flex mx-6 h-[6px] active:h-[12px] radix-state-visible:animate-fade-in radix-state-hidden:animate-fade-out">
-                    <ScrollArea.Thumb className="bg-[var(--label-faint)] rounded-full opacity-60"/>
+                    <ScrollArea.Thumb className="bg-[var(--label-base)] rounded-full opacity-40"/>
                 </ScrollArea.Scrollbar>
             </ScrollArea.Root>
         </footer>

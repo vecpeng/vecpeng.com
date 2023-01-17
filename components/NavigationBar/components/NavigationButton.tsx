@@ -14,9 +14,6 @@ interface NavigationButtonProps extends React.AllHTMLAttributes<HTMLDivElement> 
 
 const NavigationButton: React.FC<NavigationButtonProps> = ({ className, children, name, shortcut, onNavButtonClick, isPage=false, active=false }) => {
     const handleClick = () => {
-        if (!isPage) {
-            return;
-        }
         onNavButtonClick(name);
     }
     
