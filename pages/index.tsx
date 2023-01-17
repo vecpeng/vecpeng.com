@@ -6,8 +6,8 @@ import NavigationBar from "@/components/NavigationBar"
 const inter = Inter({ subsets: ["latin"] })
 
 const Home = () => {
-  const title = "Dott\"s Blog"
-  const description = "A blog about writing, projects, and craft."
+  const title = "Blog Navigation"
+  const description = "A blog website."
 
   return (
     <>
