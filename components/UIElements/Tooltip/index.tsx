@@ -18,9 +18,10 @@ const Tooltip: React.FC<TooltipProps> = ({ children, content, ...props }) => {
                 {children}
             </TooltipUI.Trigger>
             <TooltipUI.Portal>
-                <TooltipUI.Content className="flex px-3 py-2 gap-2 items-center font-normal text-xs text-[var(--label-muted)] bg-[var(--bg-base)] border border-[var(--bg-border)] rounded-lg shadow-lg duration-300 ease-out transition select-none z-50" sideOffset={20}>
+                <TooltipUI.Content className="flex px-3 py-2 gap-2 items-center font-normal text-xs text-[var(--label-muted)] bg-[var(--bg-base)] border border-[var(--bg-border)] rounded-lg shadow-lg
+                duration-300 ease-out transition select-none z-50 radix-state-closed:animate-fade-out radix-state-delayed-open:animate-fade-in radix-state-instant-open:animate-fade-in-short" sideOffset={20}>
                     <span>{name}</span>
-                    <span>·</span>
+                    <span className="text-[var(--label-faint)]">·</span>
                     <div className="flex items-center gap-[6px]">
                         <div className="flex items-center justify-center h-5 w-5 bg-[var(--bg-shade)] rounded">
                             <CommandIcon className="h-4 w-4" />
@@ -29,7 +30,6 @@ const Tooltip: React.FC<TooltipProps> = ({ children, content, ...props }) => {
                             {shortcut}
                         </div>
                     </div>
-                    
                 </TooltipUI.Content>
             </TooltipUI.Portal>
         </TooltipUI.Root>

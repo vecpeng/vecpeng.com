@@ -84,7 +84,7 @@ const NavigationBar = () => {
                         </NavigationButton>
                     </div>
                 </ScrollArea.Viewport>
-                <ScrollArea.Scrollbar orientation="horizontal" className="flex mx-6 h-[6px] active:h-[12px] transition duration-300 ease-out">
+                <ScrollArea.Scrollbar orientation="horizontal" className="flex mx-6 h-[6px] active:h-[12px] radix-state-visible:animate-fade-in radix-state-hidden:animate-fade-out">
                     <ScrollArea.Thumb className="bg-[var(--label-faint)] rounded-full opacity-60"/>
                 </ScrollArea.Scrollbar>
             </ScrollArea.Root>
