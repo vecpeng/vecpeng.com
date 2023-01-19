@@ -81,13 +81,14 @@ const NavigationBar = () => {
         const interval = setInterval(() => {
             console.log("Spotify API called.")
             updateSpotifyStatus()
-        }, 5000);
+        }, 100);
         return () => clearInterval(interval);
     }, [])
     const updateSpotifyStatus = async () => {
         const res = await getCurrentPlayingTrack();
         if (res.is_playing) {
             setIsSpotifyPlaying(true);
+            if (res.item.album.images[0].url === imgLink) return;
             setImgLink(res.item.album.images[0].url);
             setTrackName(res.item.name);
             setTrackLink(res.item.external_urls.spotify);
