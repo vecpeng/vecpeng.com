@@ -12,6 +12,10 @@ module.exports = {
       },
       extend: {
         keyframes: {
+          "scale-in": {
+            "0%": { transform: "scale(0.8) translateY(20%)" },
+            "100%": { transform: "scale(1)" },
+          },
           "fade-in": {
             "0%": { opacity: 0 },
             "100%": { opacity: 1 },
@@ -94,6 +98,7 @@ module.exports = {
           },
         },
         animation: {
+          "scale-in": "scale-in 0.3s ease-out",
           "fade-in": "fade-in 0.3s ease-out",
           "fade-out": "fade-out 0.3s ease-out",
           "fade-in-short": "fade-in 0.15s ease-out",

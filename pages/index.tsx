@@ -18,7 +18,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavigationBar />
-      <main className="flex w-screen h-screen z-10">
+      <main className="flex w-screen h-screen">
         {/* <Image src="/images/demo-pic.jpg" alt="Hero" fill /> */}
       </main>
     </>

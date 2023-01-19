@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
+import * as Popover from "@radix-ui/react-popover";
 import NavigationButton from "./components/NavigationButton";
+import SpotifyCard from "./components/SpotifyCard";
+import { getCurrentPlayingTrack } from "@/utils/request";
 import HomeIcon from "@/public/icons/home.svg";
 import CraftIcon from "@/public/icons/paint.svg";
 import WritingIcon from "@/public/icons/article.svg";
@@ -23,13 +26,13 @@ const NavDivider = () => {
 }
 
 const NavigationBar = () => {
-    const { theme, setTheme } = useTheme();
+    
+    // Page Navigation
     const [isHomeActive, setIsHomeActive] = useState(true);
     const [isCraftActive, setIsCraftActive] = useState(false);
     const [isWritingActive, setIsWritingActive] = useState(false);
     const [isProjectsActive, setIsProjectsActive] = useState(false);
-    const [isSpotifyPlaying, setIsSpotifyPlaying] = useState(false);
-    const handleButtonClick = (name: string) => {
+    const handleNavigation = (name: string) => {
         if (name === "Home") {
             setIsHomeActive(true);
             setIsCraftActive(false);
@@ -50,53 +53,105 @@ const NavigationBar = () => {
             setIsCraftActive(false);
             setIsWritingActive(false);
             setIsProjectsActive(true);
-        } else if (name === "Spotify") {
-            setIsSpotifyPlaying(!isSpotifyPlaying);
-        } else if (name === "Theme") {
-            handleThemeSwitch();
-            console.log("Theme set to: " + `${theme === "dark" ? "light" : "dark"}`)
+        } else {
+            console.log("Invalid navigation name.")
         }
     }
+
+    // Social
+    const handleSocialLink = (name: string) => {
+        if (name === "Twitter") {
+            window.open("https://twitter.com/dottchen", "_blank");
+        } else if (name === "Github") {
+            window.open("https://github.com/dottchen", "_blank");
+        } else if (name === "Mail") {
+            window.open("mailto:contact@dott.love", "_blank");
+        } else {
+            console.log("Invalid social link name.")
+        }
+    }
+    
+    // Spotify
+    const [isSpotifyPlaying, setIsSpotifyPlaying] = useState(false);
+    const [imgLink, setImgLink] = useState("");
+    const [trackName, setTrackName] = useState("");
+    const [trackLink, setTrackLink] = useState("");
+    const [artistName, setArtistName] = useState("");
+    useEffect(() => {
+        const interval = setInterval(() => {
+            console.log("Spotify API called.")
+            updateSpotifyStatus()
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [])
+    const updateSpotifyStatus = async () => {
+        const res = await getCurrentPlayingTrack();
+        if (res.is_playing) {
+            setIsSpotifyPlaying(true);
+            setImgLink(res.item.album.images[0].url);
+            setTrackName(res.item.name);
+            setTrackLink(res.item.external_urls.spotify);
+            setArtistName(res.item.artists[0].name);
+        } else {
+            setIsSpotifyPlaying(false);
+            setImgLink("");
+            setTrackName("");
+            setTrackLink("");
+            setArtistName("");
+        }
+    }
+    
+    // Theme
+    const { theme, setTheme } = useTheme();
     const handleThemeSwitch = () => {
         if (theme === "dark") {
             setTheme("light");
         } else {
             setTheme("dark");
         }
+        console.log("Theme set to: " + `${theme === "dark" ? "light" : "dark"}`)
     }
 
+
     return (
-        <footer className="fixed flex w-full h-full items-center justify-center z-20">
+        <footer className="fixed flex w-full h-full items-center justify-center z-10">
             <ScrollArea.Root type="scroll" scrollHideDelay={600} className="flex-1 mx-4 max-w-[456px] min-[560px]:max-w-[512px] h-16 select-none blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)] overflow-hidden">
                 <ScrollArea.Viewport>
                     <div className="flex gap-3 p-3">
-                        <NavigationButton name="Home" shortcut="1" isPage={true} active={isHomeActive} className={`${isHomeActive ? "home-background" : ""}`} onNavButtonClick={handleButtonClick}>
+                        <NavigationButton name="Home" shortcut="1" isPage={true} active={isHomeActive} className={`${isHomeActive ? "home-background" : ""}`} onNavButtonClick={handleNavigation}>
                             <HomeIcon />
                         </NavigationButton>
-                        <NavigationButton name="Craft" shortcut="2" isPage={true} active={isCraftActive} className={`${isCraftActive ? "craft-background" : ""}`} onNavButtonClick={handleButtonClick}>
+                        <NavigationButton name="Craft" shortcut="2" isPage={true} active={isCraftActive} className={`${isCraftActive ? "craft-background" : ""}`} onNavButtonClick={handleNavigation}>
                             <CraftIcon />
                         </NavigationButton>
-                        <NavigationButton name="Writing" shortcut="3" isPage={true} active={isWritingActive} className={`${isWritingActive ? "writing-background" : ""}`} onNavButtonClick={handleButtonClick}>
+                        <NavigationButton name="Writing" shortcut="3" isPage={true} active={isWritingActive} className={`${isWritingActive ? "writing-background" : ""}`} onNavButtonClick={handleNavigation}>
                             <WritingIcon />
                         </NavigationButton>
-                        <NavigationButton name="Projects" shortcut="4" isPage={true} active={isProjectsActive} className={`${isProjectsActive ? "projects-background" : ""}`} onNavButtonClick={handleButtonClick}>
+                        <NavigationButton name="Projects" shortcut="4" isPage={true} active={isProjectsActive} className={`${isProjectsActive ? "projects-background" : ""}`} onNavButtonClick={handleNavigation}>
                             {isProjectsActive ? <FolderOpenIcon /> : <FolderCloseIcon />}
                         </NavigationButton>
                         {NavDivider()}
-                        <NavigationButton name="Twitter" shortcut="5" onNavButtonClick={handleButtonClick}>
+                        <NavigationButton name="Twitter" shortcut="5" onNavButtonClick={handleSocialLink}>
                             <TwitterIcon />
                         </NavigationButton>
-                        <NavigationButton name="Github" shortcut="6" onNavButtonClick={handleButtonClick}>
+                        <NavigationButton name="Github" shortcut="6" onNavButtonClick={handleSocialLink}>
                             <GithubIcon />
                         </NavigationButton>
-                        <NavigationButton name="Mail" shortcut="7" onNavButtonClick={handleButtonClick}>
+                        <NavigationButton name="Mail" shortcut="7" onNavButtonClick={handleSocialLink}>
                             <MailIcon />
                         </NavigationButton>
                         {NavDivider()}
-                        <NavigationButton className="max-[559px]:hidden" name="Spotify" shortcut="8" onNavButtonClick={handleButtonClick}>
-                            <SpotifyIcon className={`${isSpotifyPlaying ? "min-[560px]:text-[var(--spotify)]" : ""}`} />
-                        </NavigationButton>
-                        <NavigationButton name="Theme" shortcut="9" onNavButtonClick={handleButtonClick}>
+                        <Popover.Root modal={true}>
+                            <NavigationButton className="max-[559px]:hidden" name="Spotify" shortcut="8" onNavButtonClick={() => {}}>
+                                <SpotifyIcon className={`${isSpotifyPlaying ? "text-[var(--spotify)]" : ""}`} />
+                            </NavigationButton>
+                            <Popover.Portal>
+                                <Popover.Content onFocusOutside={event => {event.preventDefault()}} className="mx-4 max-[559px]:hidden radix-state-closed:animate-fade-out-long radix-state-open:animate-fade-in radix-state-open:animate-scale-in" sideOffset={24} side="top">
+                                    {isSpotifyPlaying ? <SpotifyCard isPlaying={true} imgLink={imgLink} trackLink={trackLink} trackName={trackName} artistName={artistName} /> : <SpotifyCard isPlaying={false}/>}
+                                </Popover.Content>
+                            </Popover.Portal>
+                        </Popover.Root>
+                        <NavigationButton name="Theme" shortcut="9" onNavButtonClick={handleThemeSwitch}>
                             {theme === "dark" ? <ThemeDarkIcon /> : <ThemeLightIcon />}
                         </NavigationButton>
                     </div>
