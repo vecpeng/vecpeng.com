@@ -95,7 +95,6 @@ const NavigationBar = () => {
             updateSpotifyStatus();
         } else {
             const res = await getCurrentPlayingTrack(accessToken);
-            console.log(res)
             if (res === undefined) {
                 await updateAccessToken();
             } else {
