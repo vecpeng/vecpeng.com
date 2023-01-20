@@ -4,7 +4,7 @@ import * as ScrollArea from "@radix-ui/react-scroll-area";
 import * as Popover from "@radix-ui/react-popover";
 import NavigationButton from "./components/NavigationButton";
 import SpotifyCard from "./components/SpotifyCard";
-import { getCurrentPlayingTrack, getAccessToken } from "@/utils/request";
+import { getCurrentPlayingTrack, getAccessToken, getUserQueue } from "@/utils/request";
 import HomeIcon from "@/public/icons/home.svg";
 import CraftIcon from "@/public/icons/paint.svg";
 import WritingIcon from "@/public/icons/article.svg";
@@ -95,21 +95,30 @@ const NavigationBar = () => {
             updateSpotifyStatus();
         } else {
             const res = await getCurrentPlayingTrack(accessToken);
+            console.log(res)
             if (res === undefined) {
                 await updateAccessToken();
-            }
-            if (res && res.is_playing) {
-                setIsSpotifyPlaying(true);
-                setImgLink(res.item.album.images[0].url);
-                setTrackName(res.item.name);
-                setTrackLink(res.item.external_urls.spotify);
-                setArtistName(res.item.artists[0].name);
             } else {
-                setIsSpotifyPlaying(false);
-                setImgLink("");
-                setTrackName("");
-                setTrackLink("");
-                setArtistName("");
+                if (res && res.is_playing && res.currently_playing_type === "track") {
+                    setIsSpotifyPlaying(true);
+                    setImgLink(res.item.album.images[0].url);
+                    setTrackName(res.item.name);
+                    setTrackLink(res.item.external_urls.spotify);
+                    setArtistName(res.item.artists[0].name);
+                } else if (res && res.is_playing && res.currently_playing_type === "episode") {
+                    const episodeRes = await getUserQueue(accessToken);
+                    setIsSpotifyPlaying(true);
+                    setImgLink(episodeRes.currently_playing.images[0].url);
+                    setTrackName(episodeRes.currently_playing.name);
+                    setTrackLink(episodeRes.currently_playing.external_urls.spotify);
+                    setArtistName(episodeRes.currently_playing.show.name);
+                } else {
+                    setIsSpotifyPlaying(false);
+                    setImgLink("");
+                    setTrackName("");
+                    setTrackLink("");
+                    setArtistName("");
+                }
             }
         }
     }

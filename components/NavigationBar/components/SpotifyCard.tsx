@@ -21,7 +21,7 @@ const SpotifyCard: React.FC<SpotifyCardProps> = ({ isPlaying, imgLink, artistNam
             <button onClick={handleOpenLink} className="flex w-80 h-full bg-[var(--bg-base)] border border-[var(--bg-border)] rounded-[20px] z-20 shadow-lg p-3 gap-4 focus:outline-none active:scale-90 transition duration-150 ease-out overflow-hidden">
                 <div className="flex relative h-20 w-20 bg-[var(--bg-shade)] items-center justify-center overflow-hidden rounded-lg border border-[var(--bg-shade)]">
                     {isPlaying && imgLink ?
-                        <Image src={imgLink} alt="Spotify Track Image" height={80} width={80} sizes="50vw" />
+                        <Image src={imgLink} alt="Spotify Track Image" height={80} width={80} sizes="25vw" />
                         :
                         <SpotifyIcon className="h-12 w-12 text-[var(--label-faint)]" />
                     }

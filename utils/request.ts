@@ -43,3 +43,22 @@ export const getCurrentPlayingTrack = async (accessToken: string) => {
         return Promise.reject(error);
     });
 };
+
+export const getUserQueue = async (accessToken: string) => {
+    return fetch("https://api.spotify.com/v1/me/player/queue", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`,
+            "Host": "api.spotify.com",
+        },
+    })
+    .then(res => {
+         if (res.ok) {
+            return res.json()
+         }
+    })
+    .catch((error) => {
+        return Promise.reject(error);
+    });
+};
