@@ -26,6 +26,9 @@ const Tooltip: React.FC<TooltipProps> = ({ children, content, ...props }) => {
                         <div className="flex items-center justify-center h-5 w-5 bg-[var(--bg-shade)] rounded">
                             <CommandIcon className="h-4 w-4" />
                         </div>
+                        <div className="flex items-center justify-center h-5 w-5 bg-[var(--bg-shade)] rounded">
+                            ⌥
+                        </div>
                         <div className="flex items-center justify-center h-5 px-[6px] bg-[var(--bg-shade)] rounded">
                             {shortcut}
                         </div>

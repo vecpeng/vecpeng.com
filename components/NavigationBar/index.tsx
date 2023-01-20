@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { useHotkeys } from 'react-hotkeys-hook'
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import * as Popover from "@radix-ui/react-popover";
 import NavigationButton from "./components/NavigationButton";
@@ -72,11 +73,15 @@ const NavigationBar = () => {
     }
     
     // Spotify
+    const [modalOpen, setModalOpen] = useState(false);
     const [isSpotifyPlaying, setIsSpotifyPlaying] = useState(false);
     const [imgLink, setImgLink] = useState("");
     const [trackName, setTrackName] = useState("");
     const [trackLink, setTrackLink] = useState("");
     const [artistName, setArtistName] = useState("");
+    const handleSpotifyClick = () => {
+        setModalOpen(true);
+    };
     useEffect(() => {
         const interval = setInterval(() => {
             updateSpotifyStatus()
@@ -127,11 +132,22 @@ const NavigationBar = () => {
     const handleThemeSwitch = () => {
         if (theme === "dark") {
             setTheme("light");
-        } else {
+        } else if (theme === "light") {
             setTheme("dark");
         }
         console.log("Theme set to: " + `${theme === "dark" ? "light" : "dark"}`)
     }
+
+    // Keyboard shorcut
+    useHotkeys("meta+alt+1", () => handleNavigation("Home"));
+    useHotkeys("meta+alt+2", () => handleNavigation("Craft"));
+    useHotkeys("meta+alt+3", () => handleNavigation("Writing"));
+    useHotkeys("meta+alt+4", () => handleNavigation("Projects"));
+    useHotkeys("meta+alt+5", () => handleSocialLink("Twitter"));
+    useHotkeys("meta+alt+6", () => handleSocialLink("Github"));
+    useHotkeys("meta+alt+7", () => handleSocialLink("Mail"));
+    useHotkeys("meta+alt+8", () => handleSpotifyClick());
+    useHotkeys("meta+alt+9", () => handleThemeSwitch(), [handleThemeSwitch]);
 
 
     return (
@@ -162,12 +178,12 @@ const NavigationBar = () => {
                             <MailIcon />
                         </NavigationButton>
                         {NavDivider()}
-                        <Popover.Root modal={true}>
-                            <NavigationButton className="max-[559px]:hidden" name="Spotify" shortcut="8" onNavButtonClick={() => {}}>
+                        <Popover.Root modal={true} open={modalOpen}>
+                            <NavigationButton className="max-[559px]:hidden" name="Spotify" shortcut="8" onNavButtonClick={handleSpotifyClick}>
                                 <SpotifyIcon className={`${isSpotifyPlaying ? "text-[var(--spotify)]" : ""}`} />
                             </NavigationButton>
                             <Popover.Portal>
-                                <Popover.Content onFocusOutside={event => {event.preventDefault()}} onCloseAutoFocus={event => {event.preventDefault()}} className="mx-4 max-[559px]:hidden radix-state-closed:animate-fade-out-long radix-state-open:animate-fade-in radix-state-open:animate-scale-in" sideOffset={24} side="top">
+                                <Popover.Content onInteractOutside={() => {setModalOpen(false)}} onEscapeKeyDown={() => {setModalOpen(false)}} onFocusOutside={event => {event.preventDefault()}} onCloseAutoFocus={event => {event.preventDefault()}} className="mx-4 max-[559px]:hidden radix-state-closed:animate-fade-out-long radix-state-open:animate-fade-in radix-state-open:animate-scale-in" sideOffset={24} side="top">
                                     {isSpotifyPlaying ? <SpotifyCard isPlaying={true} imgLink={imgLink} trackLink={trackLink} trackName={trackName} artistName={artistName} /> : <SpotifyCard isPlaying={false}/>}
                                 </Popover.Content>
                             </Popover.Portal>
