@@ -18,15 +18,15 @@ const SpotifyCard: React.FC<SpotifyCardProps> = ({ isPlaying, imgLink, artistNam
 
     return (
         <>
-            <button onClick={handleOpenLink} className="flex w-80 h-full bg-[var(--bg-base)] border border-[var(--bg-border)] rounded-3xl z-20 shadow-lg p-3 gap-4 focus:outline-none active:scale-90 transition duration-150 ease-out overflow-hidden">
-                <div className="flex relative h-20 w-20 bg-[var(--bg-shade)] rounded-xl items-center justify-center overflow-hidden z-30">
+            <button onClick={handleOpenLink} className="flex w-80 h-full bg-[var(--bg-base)] border border-[var(--bg-border)] rounded-[20px] z-20 shadow-lg p-3 gap-4 focus:outline-none active:scale-90 transition duration-150 ease-out overflow-hidden">
+                <div className="flex relative h-20 w-20 bg-[var(--bg-shade)] items-center justify-center overflow-hidden rounded-lg border border-[var(--bg-shade)]">
                     {isPlaying && imgLink ?
-                        <Image src={imgLink} alt="Spotify Track Image" fill sizes="50vw" />
+                        <Image src={imgLink} alt="Spotify Track Image" height={80} width={80} sizes="50vw" />
                         :
                         <SpotifyIcon className="h-12 w-12 text-[var(--label-faint)]" />
                     }
                 </div>
-                <div className={`flex flex-1 flex-col ${isPlaying ? "gap-4" : "gap-8"} z-30`}>
+                <div className={`flex flex-1 flex-col ${isPlaying ? "gap-4" : "gap-8"}`}>
                     <div className={`flex justify-end`}>
                         <SpotifyIcon className="h-5 w-5 text-[var(--label-faint)]" />
                     </div>

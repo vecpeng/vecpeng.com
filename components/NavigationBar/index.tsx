@@ -4,7 +4,7 @@ import * as ScrollArea from "@radix-ui/react-scroll-area";
 import * as Popover from "@radix-ui/react-popover";
 import NavigationButton from "./components/NavigationButton";
 import SpotifyCard from "./components/SpotifyCard";
-import { getCurrentPlayingTrack } from "@/utils/request";
+import { getCurrentPlayingTrack, getAccessToken } from "@/utils/request";
 import HomeIcon from "@/public/icons/home.svg";
 import CraftIcon from "@/public/icons/paint.svg";
 import WritingIcon from "@/public/icons/article.svg";
@@ -79,26 +79,38 @@ const NavigationBar = () => {
     const [artistName, setArtistName] = useState("");
     useEffect(() => {
         const interval = setInterval(() => {
-            console.log("Spotify API called.")
             updateSpotifyStatus()
-        }, 100);
+        }, 200);
         return () => clearInterval(interval);
-    }, [])
+    });
+    const updateAccessToken = async () => {
+        const res = await getAccessToken();
+        const accessToken = res.access_token;
+        localStorage.setItem("spotify_access_token", accessToken);
+    };
     const updateSpotifyStatus = async () => {
-        const res = await getCurrentPlayingTrack();
-        if (res.is_playing) {
-            setIsSpotifyPlaying(true);
-            if (res.item.album.images[0].url === imgLink) return;
-            setImgLink(res.item.album.images[0].url);
-            setTrackName(res.item.name);
-            setTrackLink(res.item.external_urls.spotify);
-            setArtistName(res.item.artists[0].name);
+        const accessToken = localStorage.getItem("spotify_access_token");
+        if (accessToken === null) {
+            await updateAccessToken();
+            updateSpotifyStatus();
         } else {
-            setIsSpotifyPlaying(false);
-            setImgLink("");
-            setTrackName("");
-            setTrackLink("");
-            setArtistName("");
+            const res = await getCurrentPlayingTrack(accessToken);
+            if (res === undefined) {
+                await updateAccessToken();
+            }
+            if (res && res.is_playing) {
+                setIsSpotifyPlaying(true);
+                setImgLink(res.item.album.images[0].url);
+                setTrackName(res.item.name);
+                setTrackLink(res.item.external_urls.spotify);
+                setArtistName(res.item.artists[0].name);
+            } else {
+                setIsSpotifyPlaying(false);
+                setImgLink("");
+                setTrackName("");
+                setTrackLink("");
+                setArtistName("");
+            }
         }
     }
     
@@ -147,7 +159,7 @@ const NavigationBar = () => {
                                 <SpotifyIcon className={`${isSpotifyPlaying ? "text-[var(--spotify)]" : ""}`} />
                             </NavigationButton>
                             <Popover.Portal>
-                                <Popover.Content onFocusOutside={event => {event.preventDefault()}} className="mx-4 max-[559px]:hidden radix-state-closed:animate-fade-out-long radix-state-open:animate-fade-in radix-state-open:animate-scale-in" sideOffset={24} side="top">
+                                <Popover.Content onFocusOutside={event => {event.preventDefault()}} onCloseAutoFocus={event => {event.preventDefault()}} className="mx-4 max-[559px]:hidden radix-state-closed:animate-fade-out-long radix-state-open:animate-fade-in radix-state-open:animate-scale-in" sideOffset={24} side="top">
                                     {isSpotifyPlaying ? <SpotifyCard isPlaying={true} imgLink={imgLink} trackLink={trackLink} trackName={trackName} artistName={artistName} /> : <SpotifyCard isPlaying={false}/>}
                                 </Popover.Content>
                             </Popover.Portal>
