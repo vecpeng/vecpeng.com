@@ -1,6 +1,17 @@
+import Head from "next/head";
+
 const Writing = () => {
+    const title = "Writing"
+
     return (
-        <div>Writing</div>
+      <>
+        <Head>
+          <title>{title}</title>
+        </Head>
+        <main className="flex w-screen h-screen">
+            <div>{title}</div>
+        </main>
+      </>
     )
 };
 

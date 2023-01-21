@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { useTheme } from "next-themes";
+import Router from "next/router";
 import { useHotkeys } from 'react-hotkeys-hook'
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import * as Popover from "@radix-ui/react-popover";
@@ -29,35 +31,49 @@ const NavDivider = () => {
 const NavigationBar = () => {
     
     // Page Navigation
-    const [isHomeActive, setIsHomeActive] = useState(true);
+    const [isHomeActive, setIsHomeActive] = useState(false) 
     const [isCraftActive, setIsCraftActive] = useState(false);
     const [isWritingActive, setIsWritingActive] = useState(false);
     const [isProjectsActive, setIsProjectsActive] = useState(false);
     const handleNavigation = (name: string) => {
         if (name === "Home") {
+            Router.push("/");
+        } else if (name === "Craft") {
+            Router.push("/craft");
+        } else if (name === "Writing") {
+            Router.push("/writing");
+        } else if (name === "Projects") {
+            Router.push("/projects");
+        } else {
+            console.log("Invalid navigation name.")
+        }
+    }
+
+    useEffect(() => {
+        if (window.location.pathname === "/") {
             setIsHomeActive(true);
             setIsCraftActive(false);
             setIsWritingActive(false);
             setIsProjectsActive(false);
-        } else if (name === "Craft") {
+        } else if (window.location.pathname === "/craft") {
             setIsHomeActive(false);
             setIsCraftActive(true);
             setIsWritingActive(false);
             setIsProjectsActive(false);
-        } else if (name === "Writing") {
+        } else if (window.location.pathname === "/writing") {
             setIsHomeActive(false);
             setIsCraftActive(false);
             setIsWritingActive(true);
             setIsProjectsActive(false);
-        } else if (name === "Projects") {
+        } else if (window.location.pathname === "/projects") {
             setIsHomeActive(false);
             setIsCraftActive(false);
             setIsWritingActive(false);
             setIsProjectsActive(true);
         } else {
-            console.log("Invalid navigation name.")
+            return
         }
-    }
+    })
 
     // Social
     const handleSocialLink = (name: string) => {
@@ -151,7 +167,7 @@ const NavigationBar = () => {
 
 
     return (
-        <footer className="fixed flex w-full h-full items-center justify-center z-10">
+        <header className="fixed flex w-full h-full items-center justify-center z-10">
             <ScrollArea.Root type="scroll" scrollHideDelay={600} className="flex-1 mx-4 max-w-[456px] min-[560px]:max-w-[512px] h-16 select-none blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)] overflow-hidden">
                 <ScrollArea.Viewport>
                     <div className="flex gap-3 p-3">
@@ -207,7 +223,7 @@ const NavigationBar = () => {
                         <MusicTwoIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-6  opacity-0 animation-delay-1500"/>
                     </div>
                 ) : null}
-        </footer>
+        </header>
     )
 };
 
