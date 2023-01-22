@@ -1,7 +1,7 @@
 import React from "react";
 import Head from 'next/head'
 import NavigationBar from "./NavigationBar";
-import Footer from "./Footer";
+import Header from "./Header";
 
 
 interface LayoutProps extends React.AllHTMLAttributes<HTMLDivElement> {
@@ -21,11 +21,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <meta name="twitter:creator" content="@DottChen" />
                 {/* <script async src="https://cdn.splitbee.io/sb.js" /> */}
             </Head>
+            <Header />
             <NavigationBar />
-            <div className="flex flex-col items-center max-w-2xl w-full mx-auto">
+            <div className="flex flex-col max-w-2xl w-full mx-auto pt-40 px-6">
                 {children}
             </div>
-            <Footer />
         </>
     );
   }

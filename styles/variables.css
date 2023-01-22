@@ -10,17 +10,30 @@
   --bg-border: #282828;
   --bg-border-strong: #404040;
 
-  --label-title: #FFFFFF;
-  --label-base: #E1E1E1;
-  --label-muted: #9A9A9A;
+  --label-title: #ffffff;
+  --label-base: #e1e1e1;
+  --label-muted: #9a9a9a;
   --label-faint: #404040;
 
-  --gradient-home: linear-gradient(225deg, #003A30 0%, rgba(0, 0, 0, 0) 100%), #181818;
-  --gradient-craft: linear-gradient(225deg, #403200 0%, rgba(0, 0, 0, 0) 100%), #181818;
-  --gradient-writing: linear-gradient(225deg, #002660 0%, rgba(0, 0, 0, 0) 100%), #181818;
-  --gradient-projects: linear-gradient(225deg, #481100 0%, rgba(0, 0, 0, 0) 100%), #181818;
+  --gradient-home: linear-gradient(225deg, #003a30 0%, rgba(0, 0, 0, 0) 100%),
+    #181818;
+  --gradient-craft: linear-gradient(225deg, #403200 0%, rgba(0, 0, 0, 0) 100%),
+    #181818;
+  --gradient-writing: linear-gradient(225deg, #002660 0%, rgba(0, 0, 0, 0) 100%),
+    #181818;
+  --gradient-projects: linear-gradient(
+      225deg,
+      #481100 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    #181818;
 
-  --gradient-divider: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+  --gradient-divider: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
 
   --spotify: #65d46e;
 
@@ -28,40 +41,71 @@
 
   /* shadows */
   --shadow-low: 0px 2px 6px rgba(0, 0, 0, 0.15), 0px 1px 1px rgba(0, 0, 0, 0.3);
-  --shadow-medium: 0px 4px 12px rgba(0, 0, 0, 0.15), 0px 2px 4px rgba(0, 0, 0, 0.3);
-  --shadow-high: 0px 8px 32px rgba(0, 0, 0, 0.15), 0px 2px 20px rgba(0, 0, 0, 0.3);
-  --shadow-float: 0px 24px 60px rgba(0, 0, 0, 0.3), 0px 8px 20px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0px 4px 12px rgba(0, 0, 0, 0.15),
+    0px 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-high: 0px 8px 32px rgba(0, 0, 0, 0.15),
+    0px 2px 20px rgba(0, 0, 0, 0.3);
+  --shadow-float: 0px 24px 60px rgba(0, 0, 0, 0.3),
+    0px 8px 20px rgba(0, 0, 0, 0.3);
 }
-  
+
 [data-theme="light"] {
   /* colors */
-  --bg-base: #F5F5F5;
-  --bg-sub: #F2F2F2;
-  --bg-shade: #E2E2E2;
-  --bg-border: #CCCCCC;
+  --bg-base: #f5f5f5;
+  --bg-sub: #f2f2f2;
+  --bg-shade: #e2e2e2;
+  --bg-border: #cccccc;
   --bg-border-strong: #666666;
 
   --label-title: #121212;
-  --label-base: #1C1C1C;
+  --label-base: #1c1c1c;
   --label-muted: #888888;
-  --label-faint: #BEBEBE;
+  --label-faint: #bebebe;
 
-  --spotify: #1DB954;
+  --spotify: #1db954;
 
-  --blur-base: #FFFFFF66;
+  --blur-base: #ffffff66;
 
-  --gradient-home: linear-gradient(225deg, #91FFEB 0%, rgba(255, 255, 255, 0) 100%), #F2F2F2;
-  --gradient-craft: linear-gradient(225deg, #FFE78F 0%, rgba(255, 255, 255, 0) 100%), #F2F2F2;
-  --gradient-writing: linear-gradient(225deg, #8AB9FF 0%, rgba(255, 255, 255, 0) 100%), #F2F2F2;
-  --gradient-projects: linear-gradient(225deg, #FFB199 0%, rgba(255, 255, 255, 0) 100%), #F2F2F2;
+  --gradient-home: linear-gradient(
+      225deg,
+      #91ffeb 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #f2f2f2;
+  --gradient-craft: linear-gradient(
+      225deg,
+      #ffe78f 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #f2f2f2;
+  --gradient-writing: linear-gradient(
+      225deg,
+      #8ab9ff 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #f2f2f2;
+  --gradient-projects: linear-gradient(
+      225deg,
+      #ffb199 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #f2f2f2;
 
-  --gradient-divider: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
+  --gradient-divider: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
 
   /* shadows */
   --shadow-low: 0px 2px 6px rgba(0, 0, 0, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.05);
-  --shadow-medium: 0px 4px 12px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.05);
-  --shadow-high: 0px 8px 32px rgba(0, 0, 0, 0.1), 0px 2px 20px rgba(0, 0, 0, 0.05);
-  --shadow-float: 0px 24px 60px rgba(0, 0, 0, 0.2), 0px 8px 20px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0px 4px 12px rgba(0, 0, 0, 0.1),
+    0px 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-high: 0px 8px 32px rgba(0, 0, 0, 0.1),
+    0px 2px 20px rgba(0, 0, 0, 0.05);
+  --shadow-float: 0px 24px 60px rgba(0, 0, 0, 0.2),
+    0px 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .home-background {
@@ -82,5 +126,12 @@
 
 .blur-background {
   background-color: var(--blur-base);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(8px);
+}
+
+.shadow-highlight {
+  filter: drop-shadow(0px 1px 2px rgba(255, 255, 255, 0.6));
+}
+.shadow-highlight::selection {
+  background: transparent;
 }

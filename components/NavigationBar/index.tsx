@@ -31,6 +31,7 @@ const NavDivider = () => {
 const NavigationBar = () => {
     
     // Page Navigation
+    const [currentPage, setCurrentPage] = useState("/");
     const [isHomeActive, setIsHomeActive] = useState(false) 
     const [isCraftActive, setIsCraftActive] = useState(false);
     const [isWritingActive, setIsWritingActive] = useState(false);
@@ -48,24 +49,27 @@ const NavigationBar = () => {
             console.log("Invalid navigation name.")
         }
     }
+    useEffect(() => {
+        setCurrentPage(window.location.pathname);
+    }, [])
 
     useEffect(() => {
-        if (window.location.pathname === "/") {
+        if (currentPage === "/") {
             setIsHomeActive(true);
             setIsCraftActive(false);
             setIsWritingActive(false);
             setIsProjectsActive(false);
-        } else if (window.location.pathname === "/craft") {
+        } else if (currentPage === "/craft") {
             setIsHomeActive(false);
             setIsCraftActive(true);
             setIsWritingActive(false);
             setIsProjectsActive(false);
-        } else if (window.location.pathname === "/writing") {
+        } else if (currentPage === "/writing") {
             setIsHomeActive(false);
             setIsCraftActive(false);
             setIsWritingActive(true);
             setIsProjectsActive(false);
-        } else if (window.location.pathname === "/projects") {
+        } else if (currentPage === "/projects") {
             setIsHomeActive(false);
             setIsCraftActive(false);
             setIsWritingActive(false);
@@ -73,7 +77,7 @@ const NavigationBar = () => {
         } else {
             return
         }
-    })
+    }, [currentPage])
 
     // Social
     const handleSocialLink = (name: string) => {
@@ -167,7 +171,7 @@ const NavigationBar = () => {
 
 
     return (
-        <header className="fixed flex w-full h-full items-center justify-center z-10">
+        <footer className="fixed flex w-full bottom-6 items-center justify-center z-10">
             <ScrollArea.Root type="scroll" scrollHideDelay={600} className="flex-1 mx-4 max-w-[456px] min-[560px]:max-w-[512px] h-16 select-none blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)] overflow-hidden">
                 <ScrollArea.Viewport>
                     <div className="flex gap-3 p-3">
@@ -223,7 +227,7 @@ const NavigationBar = () => {
                         <MusicTwoIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-6  opacity-0 animation-delay-1500"/>
                     </div>
                 ) : null}
-        </header>
+        </footer>
     )
 };
 
