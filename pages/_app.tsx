@@ -7,14 +7,18 @@ import Layout from "@/components/Layout";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <ThemeProvider defaultTheme = "dark" enableSystem={false} themes={["light", "dark"]}>
+    <ThemeProvider
+      defaultTheme="dark"
+      enableSystem={false}
+      themes={["light", "dark"]}
+    >
       <TooltipUI.Provider delayDuration={800} skipDelayDuration={300}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
       </TooltipUI.Provider>
     </ThemeProvider>
-  )
-}
+  );
+};
 
 export default App;

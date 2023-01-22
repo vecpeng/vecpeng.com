@@ -1,5 +1,3 @@
-const PostItem = () => {
-
-};
+const PostItem = () => {};
 
 export default PostItem;
