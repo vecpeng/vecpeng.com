@@ -2,6 +2,10 @@ import Head from "next/head";
 
 const Craft = () => {
   const title = "Craft";
+  const description = `
+  Craftsmanship is what makes a great idea become a great product. Here I explore the possibilities\
+  of polished interfaces and delightful interactions.
+  `;
 
   return (
     <>
@@ -10,8 +14,11 @@ const Craft = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col gap-8 w-full h-full">
-        <div className="text-base font-medium text-[var(--label-titiel)] leading-6 shadow-highlight">
+        <div className="text-base font-medium text-[var(--label-titiel)] leading-7 shadow-highlight">
           {title}
+        </div>
+        <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
+          {description}
         </div>
       </main>
     </>

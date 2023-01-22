@@ -175,7 +175,7 @@ const NavigationBar = () => {
   useHotkeys("meta+alt+9", () => handleThemeSwitch(), [handleThemeSwitch]);
 
   return (
-    <footer className="fixed flex w-full bottom-6 items-center justify-center z-10">
+    <footer className="fixed flex w-full bottom-6 items-center justify-center z-20">
       <ScrollArea.Root
         type="scroll"
         scrollHideDelay={600}
