@@ -316,7 +316,7 @@ const NavigationBar = () => {
         </ScrollArea.Scrollbar>
       </ScrollArea.Root>
       {isSpotifyPlaying ? (
-        <div className="relative right-[92px] -top-6 h-0 w-0 invisible min-[560px]:visible">
+        <div className="relative right-[108px] -top-6 h-0 w-0 invisible min-[560px]:visible">
           <MusicOneIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-1 opacity-0" />
           <MusicTwoIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-2  opacity-0 animation-delay-300" />
           <MusicOneIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-3  opacity-0 animation-delay-600" />
