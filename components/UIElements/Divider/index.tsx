@@ -8,7 +8,7 @@ const Divider: React.FC<DividerProps> = ({ className }) => {
   return (
     <div
       className={twMerge(
-        `h-px w-full my-2 bg-[var(--bg-border)] rounded-full`,
+        `h-px w-full bg-[var(--bg-border)] rounded-full`,
         className
       )}
     />

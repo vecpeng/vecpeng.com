@@ -10,15 +10,13 @@
 
 html,
 body {
-  max-width: 100vw;
   overflow-x: hidden;
-  padding: 0;
-  margin: 0;
   font-family: "Inter", "Source Han Sans CN", ui-sans-serif, -apple-system,
     Arial, Helvetica, "Apple Color Emoji", sans-serif, "Segoe UI Emoji",
     "Segoe UI Symbol";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: calc(100vw - 16px);
 }
 
 body {
