@@ -147,7 +147,13 @@ const Writing: React.FC<WritingProps> = ({ posts }) => {
             return <PostSection posts={newPosts} key={publishYear} />;
           })}
         </div>
-        <Button className="mt-12" text="Subscribe" onClick={() => {}}>
+        <Button
+          className="mt-12"
+          text="Subscribe"
+          onClick={() => {
+            window.open("https://dott.love/rss.xml");
+          }}
+        >
           <RssIcon />
         </Button>
       </main>
