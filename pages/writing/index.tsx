@@ -126,7 +126,16 @@ const Writing: React.FC<WritingProps> = ({ posts }) => {
         <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
           {description}
         </div>
-        <div className="flex flex-col mt-4">
+        <Button
+          className=""
+          text="Subscribe"
+          onClick={() => {
+            window.open("https://dott.love/rss.xml");
+          }}
+        >
+          <RssIcon />
+        </Button>
+        <div className="flex flex-col">
           {postsByYear.map((postSection) => {
             const { publishYear, posts } = postSection;
             const newPosts = posts.map((post: any) => {
@@ -147,15 +156,6 @@ const Writing: React.FC<WritingProps> = ({ posts }) => {
             return <PostSection posts={newPosts} key={publishYear} />;
           })}
         </div>
-        <Button
-          className="mt-12"
-          text="Subscribe"
-          onClick={() => {
-            window.open("https://dott.love/rss.xml");
-          }}
-        >
-          <RssIcon />
-        </Button>
       </main>
     </>
   );
