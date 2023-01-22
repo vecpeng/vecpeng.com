@@ -32,7 +32,6 @@ const NavDivider = () => {
 
 const NavigationBar = () => {
   // Page Navigation
-  let pageRoute = window.location.pathname;
   const [currentPage, setCurrentPage] = useState("/");
   const [isHomeActive, setIsHomeActive] = useState(false);
   const [isCraftActive, setIsCraftActive] = useState(false);
@@ -52,26 +51,26 @@ const NavigationBar = () => {
     }
   };
   useEffect(() => {
-    setCurrentPage(pageRoute);
-  }, [pageRoute]);
+    setCurrentPage(window.location.pathname);
+  });
 
   useEffect(() => {
-    if (currentPage === "/") {
+    if (window.location.pathname === "/") {
       setIsHomeActive(true);
       setIsCraftActive(false);
       setIsWritingActive(false);
       setIsProjectsActive(false);
-    } else if (currentPage === "/craft") {
+    } else if (window.location.pathname === "/craft") {
       setIsHomeActive(false);
       setIsCraftActive(true);
       setIsWritingActive(false);
       setIsProjectsActive(false);
-    } else if (currentPage === "/writing") {
+    } else if (window.location.pathname === "/writing") {
       setIsHomeActive(false);
       setIsCraftActive(false);
       setIsWritingActive(true);
       setIsProjectsActive(false);
-    } else if (currentPage === "/projects") {
+    } else if (window.location.pathname === "/projects") {
       setIsHomeActive(false);
       setIsCraftActive(false);
       setIsWritingActive(false);
