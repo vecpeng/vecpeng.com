@@ -126,7 +126,7 @@ const Writing: React.FC<WritingProps> = ({ posts }) => {
         <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
           {description}
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col mt-4">
           {postsByYear.map((postSection) => {
             const { publishYear, posts } = postSection;
             const newPosts = posts.map((post: any) => {

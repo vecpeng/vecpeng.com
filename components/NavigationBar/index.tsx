@@ -183,46 +183,54 @@ const NavigationBar = () => {
       >
         <ScrollArea.Viewport>
           <div className="flex gap-3 p-3">
-            <NavigationButton
-              name="Home"
-              shortcut="1"
-              isPage={true}
-              active={isHomeActive}
-              className={`${isHomeActive ? "home-background" : ""}`}
-              onNavButtonClick={handleNavigation}
-            >
-              <HomeIcon />
-            </NavigationButton>
-            <NavigationButton
-              name="Craft"
-              shortcut="2"
-              isPage={true}
-              active={isCraftActive}
-              className={`${isCraftActive ? "craft-background" : ""}`}
-              onNavButtonClick={handleNavigation}
-            >
-              <CraftIcon />
-            </NavigationButton>
-            <NavigationButton
-              name="Writing"
-              shortcut="3"
-              isPage={true}
-              active={isWritingActive}
-              className={`${isWritingActive ? "writing-background" : ""}`}
-              onNavButtonClick={handleNavigation}
-            >
-              <WritingIcon />
-            </NavigationButton>
-            <NavigationButton
-              name="Projects"
-              shortcut="4"
-              isPage={true}
-              active={isProjectsActive}
-              className={`${isProjectsActive ? "projects-background" : ""}`}
-              onNavButtonClick={handleNavigation}
-            >
-              {isProjectsActive ? <FolderOpenIcon /> : <FolderCloseIcon />}
-            </NavigationButton>
+            <Link href="/">
+              <NavigationButton
+                name="Home"
+                shortcut="1"
+                isPage={true}
+                active={isHomeActive}
+                className={`${isHomeActive ? "home-background" : ""}`}
+                onNavButtonClick={() => {}}
+              >
+                <HomeIcon />
+              </NavigationButton>
+            </Link>
+            <Link href="/craft">
+              <NavigationButton
+                name="Craft"
+                shortcut="2"
+                isPage={true}
+                active={isCraftActive}
+                className={`${isCraftActive ? "craft-background" : ""}`}
+                onNavButtonClick={() => {}}
+              >
+                <CraftIcon />
+              </NavigationButton>
+            </Link>
+            <Link href="/writing">
+              <NavigationButton
+                name="Writing"
+                shortcut="3"
+                isPage={true}
+                active={isWritingActive}
+                className={`${isWritingActive ? "writing-background" : ""}`}
+                onNavButtonClick={() => {}}
+              >
+                <WritingIcon />
+              </NavigationButton>
+            </Link>
+            <Link href="/projects">
+              <NavigationButton
+                name="Projects"
+                shortcut="4"
+                isPage={true}
+                active={isProjectsActive}
+                className={`${isProjectsActive ? "projects-background" : ""}`}
+                onNavButtonClick={() => {}}
+              >
+                {isProjectsActive ? <FolderOpenIcon /> : <FolderCloseIcon />}
+              </NavigationButton>
+            </Link>
             {NavDivider()}
             <NavigationButton
               name="Twitter"
