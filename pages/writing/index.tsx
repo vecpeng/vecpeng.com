@@ -143,7 +143,7 @@ const Writing: React.FC<WritingProps> = ({ posts }) => {
                 title: post.properties.articleTitle.title[0].plain_text,
                 description:
                   post.properties.articleDescription.rich_text[0].plain_text,
-                slug: `/${post.properties.slug.rich_text[0].plain_text}`,
+                slug: `${post.properties.slug.rich_text[0].plain_text}`,
                 date: new Date(
                   post.properties.articleDate.date.start
                 ).toLocaleString("en-US", {
