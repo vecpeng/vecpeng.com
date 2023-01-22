@@ -11,7 +11,7 @@
 html,
 body {
   overflow-x: hidden;
-  font-family: "Inter", "Source Han Sans CN", ui-sans-serif, -apple-system,
+  font-family: "Inter UI", "Source Han Sans CN", ui-sans-serif, -apple-system,
     Arial, Helvetica, "Apple Color Emoji", sans-serif, "Segoe UI Emoji",
     "Segoe UI Symbol";
   -webkit-font-smoothing: antialiased;
