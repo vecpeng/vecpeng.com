@@ -32,6 +32,7 @@ const NavDivider = () => {
 
 const NavigationBar = () => {
   // Page Navigation
+  let pageRoute = window.location.pathname;
   const [currentPage, setCurrentPage] = useState("/");
   const [isHomeActive, setIsHomeActive] = useState(false);
   const [isCraftActive, setIsCraftActive] = useState(false);
@@ -51,8 +52,8 @@ const NavigationBar = () => {
     }
   };
   useEffect(() => {
-    setCurrentPage(window.location.pathname);
-  }, []);
+    setCurrentPage(pageRoute);
+  }, [pageRoute]);
 
   useEffect(() => {
     if (currentPage === "/") {
@@ -179,7 +180,7 @@ const NavigationBar = () => {
       <ScrollArea.Root
         type="scroll"
         scrollHideDelay={600}
-        className="flex-1 mx-4 max-w-[456px] min-[560px]:max-w-[512px] h-16 select-none blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)] overflow-hidden"
+        className="flex-1 mx-6 max-w-[456px] min-[560px]:max-w-[512px] h-16 select-none blur-background rounded-[28px] border-[0.5px] border-[var(--bg-border)] overflow-hidden"
       >
         <ScrollArea.Viewport>
           <div className="flex gap-3 p-3">
@@ -273,7 +274,7 @@ const NavigationBar = () => {
                   onCloseAutoFocus={(event) => {
                     event.preventDefault();
                   }}
-                  className="mx-4 max-[559px]:hidden radix-state-closed:animate-fade-out-long radix-state-open:animate-fade-in radix-state-open:animate-scale-in"
+                  className="mx-6 max-[559px]:hidden radix-state-closed:animate-fade-out-long radix-state-open:animate-fade-in radix-state-open:animate-scale-in"
                   sideOffset={24}
                   side="top"
                 >
