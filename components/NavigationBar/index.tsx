@@ -11,7 +11,7 @@ import {
   getCurrentPlayingTrack,
   getAccessToken,
   getUserQueue,
-} from "@/utils/request";
+} from "@/utils/spotify-request";
 import HomeIcon from "@/public/icons/home.svg";
 import CraftIcon from "@/public/icons/paint.svg";
 import WritingIcon from "@/public/icons/article.svg";
@@ -175,7 +175,7 @@ const NavigationBar = () => {
   useHotkeys("meta+alt+9", () => handleThemeSwitch(), [handleThemeSwitch]);
 
   return (
-    <footer className="fixed flex w-full bottom-6 items-center justify-center z-20">
+    <footer className="fixed flex w-full bottom-6 items-center justify-center z-30">
       <ScrollArea.Root
         type="scroll"
         scrollHideDelay={600}
@@ -318,11 +318,11 @@ const NavigationBar = () => {
       {isSpotifyPlaying ? (
         <div className="relative right-[104px] -top-6 h-0 w-0 invisible min-[560px]:visible">
           <MusicOneIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-1 opacity-0" />
-          <MusicTwoIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-2  opacity-0 animation-delay-300" />
-          <MusicOneIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-3  opacity-0 animation-delay-600" />
-          <MusicTwoIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-4  opacity-0 animation-delay-900" />
-          <MusicOneIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-5  opacity-0 animation-delay-1200" />
-          <MusicTwoIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-6  opacity-0 animation-delay-1500" />
+          <MusicTwoIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-2 opacity-0 animation-delay-300" />
+          <MusicOneIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-3 opacity-0 animation-delay-600" />
+          <MusicTwoIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-4 opacity-0 animation-delay-900" />
+          <MusicOneIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-5 opacity-0 animation-delay-1200" />
+          <MusicTwoIcon className="absolute top-2 right-2 h-2 w-2 text-[var(--spotify)] animate-music-play-6 opacity-0 animation-delay-1500" />
         </div>
       ) : null}
     </footer>

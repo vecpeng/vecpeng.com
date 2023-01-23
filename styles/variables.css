@@ -14,6 +14,8 @@
   --label-base: #e1e1e1;
   --label-muted: #9a9a9a;
   --label-faint: #404040;
+  --label-link: #1ca865;
+  --label-link-hover: #b7f5d2;
 
   --gradient-home: linear-gradient(225deg, #003a30 0%, rgba(0, 0, 0, 0) 100%),
     #181818;
@@ -61,6 +63,8 @@
   --label-base: #1c1c1c;
   --label-muted: #666666;
   --label-faint: #bebebe;
+  --label-link: #0f854c;
+  --label-link-hover: #75e2a4;
 
   --spotify: #1db954;
 

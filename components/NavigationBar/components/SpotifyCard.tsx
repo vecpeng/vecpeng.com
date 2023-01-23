@@ -26,7 +26,7 @@ const SpotifyCard: React.FC<SpotifyCardProps> = ({
     <>
       <button
         onClick={handleOpenLink}
-        className="flex w-80 h-full bg-[var(--bg-base)] border border-[var(--bg-border)] rounded-[20px] z-20 shadow-lg p-3 gap-4 focus:outline-none active:scale-90 transition duration-150 ease-out overflow-hidden"
+        className="flex w-80 h-full bg-[var(--bg-base)] border border-[var(--bg-border)] rounded-[20px] z-30 shadow-lg p-3 gap-4 focus:outline-none active:scale-90 transition duration-150 ease-out overflow-hidden"
       >
         <div className="flex relative h-20 w-20 bg-[var(--bg-shade)] items-center justify-center overflow-hidden rounded-lg border border-[var(--bg-shade)]">
           {isPlaying && imgLink ? (

@@ -1,0 +1,58 @@
+
+    <rss version="2.0">
+        <channel>
+            <title>Dott's Blog</title>
+            <link>https://dott.love</link>
+            <description>Dott's Blog - A product &amp; design learner's forest cabin in the Internet.</description>e
+            <language>en-US</language>
+            <lastBuildDate>Mon, 23 Jan 2023 06:13:58 GMT</lastBuildDate>
+            <link href="https://dott.love/rss.xml" rel="self" type="application/rss+xml" title="Dott's Blog"/>
+            <copyright>Copyright ©Dott</copyright>
+            
+      <item>
+          <guid>https://dott.love/writing/spotify</guid>
+          <title>给你的博客添加 Spotify 播放状态</title>
+          <link>https://dott.love/writng/spotify</link>
+          <description>使用 Spotify API 和 Next.js 实现，上手简单。</description>
+          <pubDate>Jan 20, 2023</pubDate>
+          <author>contact@dott.love (Dott)</author>
+      </item>
+  
+      <item>
+          <guid>https://dott.love/writing/my-productivity-workflow</guid>
+          <title>我是如何使用效率工具的</title>
+          <link>https://dott.love/writng/my-productivity-workflow</link>
+          <description>只有先建立起一套关于“工作应该是什么样的”的逻辑自洽的理念，才有可能找到适合自己的效率工具。</description>
+          <pubDate>May 19, 2022</pubDate>
+          <author>contact@dott.love (Dott)</author>
+      </item>
+  
+      <item>
+          <guid>https://dott.love/writing/pandemic-rethink</guid>
+          <title>疫情下的重新思考</title>
+          <link>https://dott.love/writng/pandemic-rethink</link>
+          <description>关于学习、工作和生活。</description>
+          <pubDate>May 08, 2022</pubDate>
+          <author>contact@dott.love (Dott)</author>
+      </item>
+  
+      <item>
+          <guid>https://dott.love/writing/work-environment</guid>
+          <title>我们应该创造什么样的工作环境</title>
+          <link>https://dott.love/writng/work-environment</link>
+          <description>《重来3：跳出疯狂的忙碌》阅读笔记。</description>
+          <pubDate>Dec 19, 2021</pubDate>
+          <author>contact@dott.love (Dott)</author>
+      </item>
+  
+      <item>
+          <guid>https://dott.love/writing/good-design</guid>
+          <title>什么是好的设计</title>
+          <link>https://dott.love/writng/good-design</link>
+          <description>《Dieter Rams: As Little Design as Possible》阅读笔记。</description>
+          <pubDate>Sep 09, 2021</pubDate>
+          <author>contact@dott.love (Dott)</author>
+      </item>
+  
+        </channel>
+    </rss>

@@ -17,7 +17,7 @@ const Tooltip: React.FC<TooltipProps> = ({ children, content, ...props }) => {
       <TooltipUI.Portal>
         <TooltipUI.Content
           className="flex mx-6 px-3 py-2 gap-2 items-center font-normal text-xs text-[var(--label-muted)] bg-[var(--bg-base)] border border-[var(--bg-border)] rounded-lg shadow-sm
-                duration-300 ease-out transition select-none z-30 radix-state-closed:animate-fade-out radix-state-delayed-open:animate-fade-in radix-state-instant-open:animate-fade-in-short"
+                duration-300 ease-out transition select-none z-40 radix-state-closed:animate-fade-out radix-state-delayed-open:animate-fade-in radix-state-instant-open:animate-fade-in-short"
           sideOffset={20}
         >
           <span>{name}</span>

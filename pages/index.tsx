@@ -44,7 +44,7 @@ const Home = () => {
         <title>{title}</title>
       </Head>
       <main className="flex flex-col gap-8 w-full h-full">
-        <div className="text-base font-medium text-[var(--label-titiel)] leading-7 shadow-highlight">
+        <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">
           {greeting}
         </div>
         <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
@@ -54,11 +54,11 @@ const Home = () => {
           {descriptionTwo}
         </div>
         <Divider />
-        <div className="text-base font-medium text-[var(--label-titiel)] leading-7 shadow-highlight">
+        <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">
           Selected
         </div>
         <Divider />
-        <div className="text-base font-medium text-[var(--label-titiel)] leading-7 shadow-highlight">
+        <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">
           Currently
         </div>
         <div className="flex flex-col gap-4">

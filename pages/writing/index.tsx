@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { getPosts } from "@/utils/notion";
+import { getPosts } from "@/utils/notion-request";
 import Divider from "@/components/UIElements/Divider";
 import Button from "@/components/UIElements/Button";
 import RssIcon from "@/public/icons/rss.svg";
@@ -63,7 +63,7 @@ interface PostSectionProps extends React.AllHTMLAttributes<HTMLDivElement> {
 
 const PostSection: React.FC<PostSectionProps> = ({ posts }) => {
   return (
-    <div className="flex flex-col w-full">
+    <div className="group/section flex flex-col w-full">
       <Divider />
       <div className="flex flex-col">
         {posts.map((post) => (
@@ -76,6 +76,7 @@ const PostSection: React.FC<PostSectionProps> = ({ posts }) => {
           />
         ))}
       </div>
+      <Divider className="invisible group-last/section:visible" />
     </div>
   );
 };
@@ -120,7 +121,7 @@ const Writing: React.FC<WritingProps> = ({ posts }) => {
         <title>{title}</title>
       </Head>
       <main className="flex flex-col gap-8 w-full h-full">
-        <div className="text-base font-medium text-[var(--label-titiel)] leading-7 shadow-highlight">
+        <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">
           {title}
         </div>
         <div className="text-sm font-normal text-[var(--label-muted)] leading-6">

@@ -4,7 +4,7 @@ const generateRssPostItem = (post: any) => {
   let postDate;
   let postSlug;
 
-  postDate = new Date(post.properties.postDate.date.start).toLocaleString(
+  postDate = new Date(post.properties.articleDate.date.start).toLocaleString(
     "en-US",
     {
       month: "short",
@@ -12,8 +12,8 @@ const generateRssPostItem = (post: any) => {
       year: "numeric",
     }
   );
-  postDescription = post.properties.postDescription.rich_text[0].plain_text;
-  postTitle = post.properties.postTitle.title[0].plain_text;
+  postDescription = post.properties.articleDescription.rich_text[0].plain_text;
+  postTitle = post.properties.articleTitle.title[0].plain_text;
   postSlug = post.properties.slug.rich_text[0].plain_text;
 
   return `

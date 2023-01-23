@@ -20,7 +20,7 @@ body {
 }
 
 body {
-  font-size: var(--body-regular);
+  font-size: 16px;
   color: var(--label-base);
   background: var(--bg-base);
 }

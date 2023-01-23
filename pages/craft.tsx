@@ -11,10 +11,9 @@ const Craft = () => {
     <>
       <Head>
         <title>{title}</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col gap-8 w-full h-full">
-        <div className="text-base font-medium text-[var(--label-titiel)] leading-7 shadow-highlight">
+        <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">
           {title}
         </div>
         <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
