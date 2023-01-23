@@ -74,6 +74,13 @@ const Projects = () => {
         <div>
           <Divider />
           <ProjectItem
+            title="ZipPhoto"
+            description="An iOS photo organizer for professionals."
+            link="https://zipphoto.app"
+            date="2023"
+            redirect={true}
+          />
+          <ProjectItem
             title="NotionComments"
             description="A comment tool made for content creators who use Notion as their CMS."
             link="https://notioncomments.com"
@@ -81,9 +88,9 @@ const Projects = () => {
             redirect={true}
           />
           <ProjectItem
-            title="ZipPhoto"
-            description="An iOS photo organizer for professionals."
-            link="https://zipphoto.app"
+            title="AR Knowledge Base"
+            description="Where I organize resources about augmented reality."
+            link="https://ar.dott.love"
             date="2022"
             redirect={true}
           />
