@@ -18,7 +18,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@DottChen" />
         <meta name="twitter:creator" content="@DottChen" />
-        {/* <script async src="https://cdn.splitbee.io/sb.js" /> */}
+        <script async src="https://cdn.splitbee.io/sb.js" />
       </Head>
       <Header />
       <NavigationBar />
