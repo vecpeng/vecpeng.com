@@ -19,7 +19,7 @@ body {
   width: calc(100vw - 16px);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 480px) {
   html,
   body {
     width: 100vw;
@@ -53,7 +53,8 @@ a {
 }
 ::-webkit-scrollbar-track {
   width: 8px;
-  background-color: transparent;
+  border-radius: 0 0 8px 8px;
+  background-color: var(--bg-base);
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 16px;

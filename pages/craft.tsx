@@ -10,7 +10,7 @@ const Craft = () => {
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{title} - Dott</title>
       </Head>
       <main className="flex flex-col gap-8 w-full h-full">
         <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">

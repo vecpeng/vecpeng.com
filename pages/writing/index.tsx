@@ -27,7 +27,11 @@ const PostItem: React.FC<PostItemProps> = ({
   date,
 }) => {
   return (
-    <Link className="group" href={`/writing/${slug}`}>
+    <Link
+      className="group outline-none rounded-md focus:ring-2 focus:ring-[var(--label-title)] focus:bg-[var(--bg-base)] focus:ring-offset-8 focus:ring-offset-[var(--bg-base)] transition duration-150 ease-out z-10"
+      href={`/writing/${slug}`}
+      onMouseDown={(e) => e.preventDefault()}
+    >
       <div className="flex gap-4 hover:cursor-pointer w-full pt-6 group-last:pb-6">
         <div className="font-normal text-[var(--label-faint)] text-sm max-w-[40px] sm:max-w-[80px] w-full mx-auto invisible group-first:visible">
           {date.slice(-4)}
@@ -35,7 +39,7 @@ const PostItem: React.FC<PostItemProps> = ({
         <div className="flex flex-col w-full">
           <div className="flex flex-col sm:flex-row sm:flex gap-2 sm:gap-4">
             <div className="flex flex-col flex-1">
-              <div className="font-normal text-[var(--label-muted)] group-hover:text-[var(--label-base)] text-sm text-ellipsis overflow-hidden  transition duration-300 ease-out">
+              <div className="font-normal text-[var(--label-muted)] group-hover:text-[var(--label-base)] text-sm text-ellipsis overflow-hidden transition duration-300 ease-out">
                 {title}
               </div>
               <div
@@ -50,7 +54,7 @@ const PostItem: React.FC<PostItemProps> = ({
               {date.slice(0, -6)}
             </div>
           </div>
-          <Divider className="group-last:hidden mt-6" />
+          <Divider className="group-last:hidden mt-6 group-focus:invisible" />
         </div>
       </div>
     </Link>
@@ -64,7 +68,7 @@ interface PostSectionProps extends React.AllHTMLAttributes<HTMLDivElement> {
 const PostSection: React.FC<PostSectionProps> = ({ posts }) => {
   return (
     <div className="group/section flex flex-col w-full">
-      <Divider />
+      <Divider className="z-0" />
       <div className="flex flex-col">
         {posts.map((post) => (
           <PostItem
@@ -76,7 +80,7 @@ const PostSection: React.FC<PostSectionProps> = ({ posts }) => {
           />
         ))}
       </div>
-      <Divider className="invisible group-last/section:visible" />
+      <Divider className="invisible z-0 group-last/section:visible" />
     </div>
   );
 };
@@ -118,7 +122,7 @@ const Writing: React.FC<WritingProps> = ({ posts }) => {
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{title} - Dott</title>
       </Head>
       <main className="flex flex-col gap-8 w-full h-full">
         <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">

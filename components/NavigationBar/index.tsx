@@ -175,7 +175,18 @@ const NavigationBar = () => {
   useHotkeys("meta+alt+9", () => handleThemeSwitch(), [handleThemeSwitch]);
 
   return (
-    <footer className="fixed flex w-full bottom-6 items-center justify-center z-30">
+    <footer
+      className={`fixed flex w-full bottom-6 items-center justify-center z-30 
+      ${
+        currentPage === "/" ||
+        currentPage === "/craft" ||
+        currentPage === "/writing" ||
+        currentPage === "/projects"
+          ? ""
+          : "hidden"
+      }
+      `}
+    >
       <ScrollArea.Root
         type="scroll"
         scrollHideDelay={600}
@@ -183,7 +194,7 @@ const NavigationBar = () => {
       >
         <ScrollArea.Viewport>
           <div className="flex gap-3 p-3">
-            <Link href="/">
+            <Link href="/" className="outline-none" tabIndex={-1}>
               <NavigationButton
                 name="Home"
                 shortcut="1"
@@ -195,7 +206,7 @@ const NavigationBar = () => {
                 <HomeIcon />
               </NavigationButton>
             </Link>
-            <Link href="/craft">
+            <Link href="/craft" className="outline-none" tabIndex={-1}>
               <NavigationButton
                 name="Craft"
                 shortcut="2"
@@ -207,7 +218,7 @@ const NavigationBar = () => {
                 <CraftIcon />
               </NavigationButton>
             </Link>
-            <Link href="/writing">
+            <Link href="/writing" className="outline-none" tabIndex={-1}>
               <NavigationButton
                 name="Writing"
                 shortcut="3"
@@ -219,7 +230,7 @@ const NavigationBar = () => {
                 <WritingIcon />
               </NavigationButton>
             </Link>
-            <Link href="/projects">
+            <Link href="/projects" className="outline-none" tabIndex={-1}>
               <NavigationButton
                 name="Projects"
                 shortcut="4"

@@ -1,5 +1,6 @@
 import Divider from "@/components/UIElements/Divider";
 import Image from "next/image";
+import { twMerge } from "tailwind-merge";
 
 // General methods
 
@@ -12,13 +13,13 @@ const renderNestedList = (block) => {
 
   if (isNumberedList) {
     return (
-      <ol>
+      <ol className="list-decimal list-inside">
         <RenderBlocks blocks={value.children} />
       </ol>
     );
   }
   return (
-    <ul>
+    <ul className="list-disc list-inside">
       <RenderBlocks blocks={value.children} />
     </ul>
   );
@@ -115,16 +116,7 @@ export const RenderBlocks = ({ blocks }) => {
         );
 
       case "image":
-        const imageSrc =
-          value.type === "external" ? value.external.url : value.file.url;
-        const caption = value.caption.length ? value.caption[0].plain_text : "";
-        return (
-          <figure key={id}>
-            <Image alt={caption} src={imageSrc} fill />
-            {/* <img alt={caption} src={imageSrc} /> */}
-            {caption && <figcaption>{caption}</figcaption>}
-          </figure>
-        );
+        return <ImageItem key={id} value={value} />;
 
       case "callout":
         return (
@@ -160,7 +152,7 @@ export const RenderBlocks = ({ blocks }) => {
 
 // Block types
 
-const SpanText = ({ text }) => {
+const SpanText = ({ text, className }) => {
   return text.map((value) => {
     const {
       annotations: { bold, code, italic, strikethrough, underline },
@@ -169,20 +161,24 @@ const SpanText = ({ text }) => {
     return (
       <span
         key={value.id}
-        className={[
-          bold ? "text-[var(--label-base)]" : "",
-          code
-            ? "font-mono bg-[var(--bg-shade)] px-1 py-[2px] mx-1 rounded text-[var(--label-base)])]"
-            : "",
-          italic ? "italic" : "",
-          strikethrough ? "line-through" : "",
-          underline ? "underline" : "",
-        ].join(" ")}
+        className={`${twMerge(
+          [
+            bold ? "text-[var(--label-base)]" : "",
+            code
+              ? "font-mono bg-[var(--bg-shade)] px-1 py-[2px] mx-1 rounded text-[var(--label-base)]"
+              : "",
+            italic ? "italic" : "",
+            strikethrough ? "line-through" : "",
+            underline ? "underline" : "",
+          ].join(" "),
+          className
+        )}`}
       >
         {text.link ? (
           <a
             href={text.link.url}
-            className="text-[var(--label-link)] no-underline hover:text-[var(--label-link-hover)] transition duration-150 ease-out"
+            tabIndex={-1}
+            className="hover:decoration-[var(--label-muted)] hover:text-[var(--label-title)] underline underline-offset-2 decoration-[var(--label-faint)] transition duration-150 ease-out outline-none"
           >
             {text.content}
           </a>
@@ -194,9 +190,14 @@ const SpanText = ({ text }) => {
   });
 };
 
-const Text = ({ text, id }) => {
+const Text = ({ text, id, className }) => {
   return (
-    <p className="font-normal text-base text-[var(--label-base)] text-left">
+    <p
+      className={twMerge(
+        `font-normal text-base text-[var(--label-base)] leading-relaxed text-left`,
+        className
+      )}
+    >
       <SpanText text={text} id={id} />
     </p>
   );
@@ -204,7 +205,7 @@ const Text = ({ text, id }) => {
 
 const UnorderedListItem = ({ block, value, id }) => {
   return (
-    <li className="list-item mb-3">
+    <li className="list-disc font-normal text-base text-[var(--label-base)] leading-relaxed text-left -my-1">
       <SpanText text={value.rich_text} id={id} />
       {!!value.children && renderNestedList(block)}
     </li>
@@ -213,7 +214,7 @@ const UnorderedListItem = ({ block, value, id }) => {
 
 const OrderedListItem = ({ block, value, id }) => {
   return (
-    <li className="list-item mb-3">
+    <li className="list-disc font-normal text-base text-[var(--label-base)] leading-relaxed text-left -my-1">
       <SpanText text={value.rich_text} id={id} />
       {!!value.children && renderNestedList(block)}
     </li>
@@ -224,19 +225,19 @@ const Heading = ({ text, level }) => {
   switch (level) {
     case "heading_1":
       return (
-        <h1 className="font-semibold text-4xl text-[var(--label-title)] text-left">
+        <h1 className="font-semibold text-2xl text-[var(--label-title)] leading-loose text-left">
           <SpanText text={text} />
         </h1>
       );
     case "heading_2":
       return (
-        <h2 className="font-semibold text-3xl text-[var(--label-title)] text-left">
+        <h2 className="font-semibold text-xl text-[var(--label-title)] leading-relaxed text-left">
           <SpanText text={text} />
         </h2>
       );
     case "heading_3":
       return (
-        <h3 className="font-semibold text-2xl text-[var(--label-title)] text-left">
+        <h3 className="font-semibold text-lg text-[var(--label-title)] leading-relaxed text-left">
           <SpanText text={text} />
         </h3>
       );
@@ -278,15 +279,18 @@ const Toggle = ({ value }) => {
 
 const Callout = ({ text }) => {
   return (
-    <div className="bg-[var(--bg-shade)] p-4 rounded-lg my-6 shadow-md border border-[var(--bg-border)]">
-      <SpanText text={text} />
+    <div className="w-full p-4 my-3 rounded-lg bg-[var(--bg-sub)] border border-[var(--bg-border)] shadow-sm ">
+      <SpanText
+        text={text}
+        className="text-base font-normal text-[var(--label-muted)]"
+      />
     </div>
   );
 };
 
 const Blockquote = ({ text }) => {
   return (
-    <div className="p-4 my-6 border-l-4 border-[var(--bg-border)] italic">
+    <div className="p-4 my-3 border-l-4 border-[var(--bg-border)] italic text-[var(--label-base)]">
       <SpanText text={text} />
     </div>
   );
@@ -294,11 +298,35 @@ const Blockquote = ({ text }) => {
 
 const BlockCode = ({ text }) => {
   return (
-    <pre className="w-full p-4 my-6 rounded-lg block box-border bg-[var(--bg-shade)] font-mono border border-[var(--bg-border)] shadow-md overflow-auto whitespace-pre">
-      <code className="font-mono flex flex-wrap">
-        <Text text={text} />
+    <pre className="w-full p-4 my-3 rounded-lg block box-border bg-[var(--bg-sub)] font-mono border border-[var(--bg-border)] shadow-sm overflow-auto whitespace-pre">
+      <code className="font-mono flex flex-wrap text-sm">
+        <Text text={text} className="text-sm pr-4 text-[var(--label-muted)]" />
       </code>
     </pre>
+  );
+};
+
+const ImageItem = ({ value, id }) => {
+  const imageSrc =
+    value.type === "external" ? value.external.url : value.file.url;
+  const caption = value.caption.length ? value.caption[0].plain_text : "";
+  return (
+    <figure key={id} className="my-3">
+      <Image
+        alt={caption}
+        src={imageSrc}
+        width="0"
+        height="0"
+        sizes="100vw"
+        className="w-full h-full rounded-lg"
+      />
+      {/* <img alt={caption} src={imageSrc} /> */}
+      {caption && (
+        <figcaption className="text-xs mt-2 text-left text-[var(--label-muted)]">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
   );
 };
 

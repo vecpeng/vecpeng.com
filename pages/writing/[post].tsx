@@ -1,10 +1,12 @@
 import Head from "next/head";
+import Link from "next/link";
 import { getPosts, getPage, getBlocks } from "@/utils/notion-request";
 import { RenderBlocks } from "@/utils/notion-format";
 import generateRss from "@/utils/rss";
-import Sign from "@/components/Sign";
 import Divider from "@/components/UIElements/Divider";
+import Footer from "@/components/Footer";
 import fs from "fs";
+import ArrowLeftIcon from "@/public/icons/arrowLeft.svg";
 
 interface PostProps extends React.AllHTMLAttributes<HTMLDivElement> {
   post: any;
@@ -27,7 +29,7 @@ const Post: React.FC<PostProps> = ({ post, blocks }) => {
   return (
     <>
       <Head>
-        <title>{postTitle} · Dott</title>
+        <title>{postTitle} - Dott</title>
         <meta property="og:title" content={postTitle + " · Dott"} />
         <meta property="og:description" content={postDescription} />
         <meta
@@ -36,18 +38,31 @@ const Post: React.FC<PostProps> = ({ post, blocks }) => {
         />
       </Head>
       <article className="flex flex-col">
-        <div className="text-[var(--label-muted)] text-sm mb-2">{postDate}</div>
-        <h1 className="font-semibold text-4xl text-[var(--label-title)] text-left mb-4">
+        <div className="flex flex-col lg:flex-row lg:gap-20 lg:-ml-44">
+          <Link
+            className="group w-24 flex gap-1 items-center mb-10 lg:mb-4 -mt-16 lg:mt-0 text-[var(--label-base)] hover:text-[var(--label-title)] duration-150 ease-out transition"
+            href={"/writing"}
+          >
+            <ArrowLeftIcon className="h-4 w-4" />
+            <div className="text-base font-normal group-hover:decoration-[var(--label-muted)] underline underline-offset-2 decoration-[var(--label-faint)] duration-150 ease-out transition">
+              Back
+            </div>
+          </Link>
+          <div className="text-[var(--label-muted)] text-base leading-normal mb-4">
+            {postDate}
+          </div>
+        </div>
+        <h1 className="font-semibold text-3xl text-[var(--label-title)] text-left mb-4 leading-tight">
           {postTitle}
         </h1>
         <Divider />
-        <div className="flex my-16 leading-5 -mr-6 before:content-['“'] before:text-[var(--label-title)] before:text-8xl before:mr-3">
+        <div className="flex flex-col md:flex-row mt-32 mb-32 md:mb-16 md:-ml-[112px] text-[var(--label-title)] before:-mb-6 md:before:mb-0 md:leading-normal before:-ml-9 md:before:ml-0 md:before:-mt-3 before:content-['“'] before:text-[var(--label-title)] before:text-6xl md:before:text-8xl md:before:mr-4">
           {postDescription}
         </div>
-        <section className="flex flex-col">
+        <section className="flex flex-col gap-4">
           <RenderBlocks blocks={blocks} />
-          <Sign />
         </section>
+        <Footer />
       </article>
     </>
   );
