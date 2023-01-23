@@ -19,6 +19,13 @@ body {
   width: calc(100vw - 16px);
 }
 
+@media screen and (max-width: 768px) {
+  html,
+  body {
+    width: 100vw;
+  }
+}
+
 body {
   font-size: 16px;
   color: var(--label-base);

@@ -106,7 +106,7 @@ const NavigationBar = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       updateSpotifyStatus();
-    }, 200);
+    }, 2000);
     return () => clearInterval(interval);
   });
   const updateAccessToken = async () => {

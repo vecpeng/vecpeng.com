@@ -35,7 +35,7 @@ const Post: React.FC<PostProps> = ({ post, blocks }) => {
           content={"http://dott.love/writing/" + postSlug}
         />
       </Head>
-      <article className="">
+      <article className="flex flex-col">
         <div className="text-[var(--label-muted)] text-sm mb-2">{postDate}</div>
         <h1 className="font-semibold text-4xl text-[var(--label-title)] text-left mb-4">
           {postTitle}

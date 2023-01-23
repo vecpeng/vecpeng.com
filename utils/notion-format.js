@@ -1,4 +1,5 @@
 import Divider from "@/components/UIElements/Divider";
+import Image from "next/image";
 
 // General methods
 
@@ -119,7 +120,8 @@ export const RenderBlocks = ({ blocks }) => {
         const caption = value.caption.length ? value.caption[0].plain_text : "";
         return (
           <figure key={id}>
-            <img alt={caption} src={imageSrc} />
+            <Image alt={caption} src={imageSrc} fill />
+            {/* <img alt={caption} src={imageSrc} /> */}
             {caption && <figcaption>{caption}</figcaption>}
           </figure>
         );
