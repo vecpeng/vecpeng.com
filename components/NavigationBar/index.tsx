@@ -194,7 +194,12 @@ const NavigationBar = () => {
       >
         <ScrollArea.Viewport>
           <div className="flex gap-3 p-3">
-            <Link href="/" className="outline-none" tabIndex={-1}>
+            <Link
+              href="/"
+              className="outline-none"
+              tabIndex={-1}
+              aria-label="Home"
+            >
               <NavigationButton
                 name="Home"
                 shortcut="1"
@@ -202,11 +207,17 @@ const NavigationBar = () => {
                 active={isHomeActive}
                 className={`${isHomeActive ? "home-background" : ""}`}
                 onNavButtonClick={() => {}}
+                aria-label="Home"
               >
                 <HomeIcon />
               </NavigationButton>
             </Link>
-            <Link href="/craft" className="outline-none" tabIndex={-1}>
+            <Link
+              href="/craft"
+              className="outline-none"
+              tabIndex={-1}
+              aria-label="Craft"
+            >
               <NavigationButton
                 name="Craft"
                 shortcut="2"
@@ -214,11 +225,17 @@ const NavigationBar = () => {
                 active={isCraftActive}
                 className={`${isCraftActive ? "craft-background" : ""}`}
                 onNavButtonClick={() => {}}
+                aria-label="Craft"
               >
                 <CraftIcon />
               </NavigationButton>
             </Link>
-            <Link href="/writing" className="outline-none" tabIndex={-1}>
+            <Link
+              href="/writing"
+              className="outline-none"
+              tabIndex={-1}
+              aria-label="Writing"
+            >
               <NavigationButton
                 name="Writing"
                 shortcut="3"
@@ -226,11 +243,17 @@ const NavigationBar = () => {
                 active={isWritingActive}
                 className={`${isWritingActive ? "writing-background" : ""}`}
                 onNavButtonClick={() => {}}
+                aria-label="Writing"
               >
                 <WritingIcon />
               </NavigationButton>
             </Link>
-            <Link href="/projects" className="outline-none" tabIndex={-1}>
+            <Link
+              href="/projects"
+              className="outline-none"
+              tabIndex={-1}
+              aria-label="Projects"
+            >
               <NavigationButton
                 name="Projects"
                 shortcut="4"
@@ -238,6 +261,7 @@ const NavigationBar = () => {
                 active={isProjectsActive}
                 className={`${isProjectsActive ? "projects-background" : ""}`}
                 onNavButtonClick={() => {}}
+                aria-label="Projects"
               >
                 {isProjectsActive ? <FolderOpenIcon /> : <FolderCloseIcon />}
               </NavigationButton>
@@ -247,6 +271,7 @@ const NavigationBar = () => {
               name="Twitter"
               shortcut="5"
               onNavButtonClick={handleSocialLink}
+              aria-label="Twitter"
             >
               <TwitterIcon />
             </NavigationButton>
@@ -254,6 +279,7 @@ const NavigationBar = () => {
               name="Github"
               shortcut="6"
               onNavButtonClick={handleSocialLink}
+              aria-label="Github"
             >
               <GithubIcon />
             </NavigationButton>
@@ -261,6 +287,7 @@ const NavigationBar = () => {
               name="Mail"
               shortcut="7"
               onNavButtonClick={handleSocialLink}
+              aria-label="Mail"
             >
               <MailIcon />
             </NavigationButton>
@@ -271,6 +298,7 @@ const NavigationBar = () => {
                 name="Spotify"
                 shortcut="8"
                 onNavButtonClick={handleSpotifyClick}
+                aria-label="Spotify"
               >
                 <SpotifyIcon
                   className={`${
@@ -314,6 +342,7 @@ const NavigationBar = () => {
               name="Theme"
               shortcut="9"
               onNavButtonClick={handleThemeSwitch}
+              aria-label="Toggle theme"
             >
               {theme === "dark" ? <ThemeDarkIcon /> : <ThemeLightIcon />}
             </NavigationButton>

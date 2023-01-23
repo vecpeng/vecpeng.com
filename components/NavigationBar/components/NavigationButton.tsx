@@ -4,7 +4,7 @@ import * as Popover from "@radix-ui/react-popover";
 import { twMerge } from "tailwind-merge";
 
 interface NavigationButtonProps
-  extends React.AllHTMLAttributes<HTMLDivElement> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children: React.ReactNode;
   name: string;
@@ -29,6 +29,7 @@ const NavigationButton: React.FC<NavigationButtonProps> = ({
   };
   const button = (
     <button
+      {...props}
       className={twMerge(
         `flex h-10 w-10 rounded-2xl items-center justify-center bg-[var(--bg-sub)]\
         border-[1.5px] ${

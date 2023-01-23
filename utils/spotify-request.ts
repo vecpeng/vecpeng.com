@@ -6,12 +6,12 @@ export const getAccessToken = async () => {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
       Authorization: `Basic ${Buffer.from(
-        `${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}:${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET}`
+        `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
       ).toString("base64")}`,
     },
     body: querystring.stringify({
       grant_type: "refresh_token",
-      refresh_token: process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN,
+      refresh_token: process.env.SPOTIFY_REFRESH_TOKEN,
     }),
   })
     .then((res) => {
