@@ -53,10 +53,10 @@ const Home = () => {
         <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
           {descriptionTwo}
         </div>
-        <Divider />
+        {/* <Divider />
         <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">
           Selected
-        </div>
+        </div> */}
         <Divider />
         <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">
           Currently
