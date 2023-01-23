@@ -279,7 +279,7 @@ const Toggle = ({ value }) => {
 
 const Callout = ({ text }) => {
   return (
-    <div className="w-full p-4 my-3 rounded-lg bg-[var(--bg-sub)] border border-[var(--bg-border)] shadow-sm ">
+    <div className="w-full p-4 my-3 rounded-lg bg-[var(--bg-sub)] border border-[var(--bg-border)]">
       <SpanText
         text={text}
         className="text-base font-normal text-[var(--label-muted)]"
@@ -298,7 +298,7 @@ const Blockquote = ({ text }) => {
 
 const BlockCode = ({ text }) => {
   return (
-    <pre className="w-full p-4 my-3 rounded-lg block box-border bg-[var(--bg-sub)] font-mono border border-[var(--bg-border)] shadow-sm overflow-auto whitespace-pre">
+    <pre className="w-full p-4 my-3 rounded-lg block box-border bg-[var(--bg-sub)] font-mono border border-[var(--bg-border)] overflow-auto whitespace-pre">
       <code className="font-mono flex flex-wrap text-sm">
         <Text text={text} className="text-sm pr-4 text-[var(--label-muted)]" />
       </code>
