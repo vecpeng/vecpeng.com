@@ -43,6 +43,25 @@ export const getBlocks = async (blockId) => {
   return blocks;
 };
 
+export const getDemos = async () => {
+  const response = await notion.databases.query({
+    database_id: process.env.NOTION_DEMO_DATABASE_ID,
+    filter: {
+      property: "status",
+      select: {
+        equals: "Published",
+      },
+    },
+    sorts: [
+      {
+        property: "craftDate",
+        direction: "descending",
+      },
+    ],
+  });
+  return response.results;
+};
+
 export const getPageTitleByURL = async (url) => {
   fetch(url)
     .then((response) => response.text())

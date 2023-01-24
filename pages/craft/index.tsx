@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import { getDemos } from "@/utils/notion-request";
 
 interface DemoItemProps extends React.AllHTMLAttributes<HTMLDivElement> {
   title: string;
@@ -23,8 +24,9 @@ const DemoItem: React.FC<DemoItemProps> = ({
   return (
     <li className="list-none">
       <Link
-        href={slug}
-        className="group flex flex-col gap-2 rounded-2xl p-2 border border-[var(--bg-border)] bg-[var(--bg-sub)] hover:border-[var(--bg-border-strong)] hover:scale-[102%] transition ease-out duration-300"
+        href={`/writing/${slug}`}
+        className="group flex flex-col gap-2 rounded-2xl p-2 border border-[var(--bg-border)] bg-[var(--bg-sub)] hover:border-[var(--bg-border-strong)] hover:scale-[102%] focus:border-[var(--bg-border-strong)] focus:scale-[102%] transition ease-out duration-300 outline-none"
+        onMouseDown={(e) => e.preventDefault()}
       >
         <div className="flex rounded-lg bg-[var(--bg-base)] border border-[var(--bg-border)] overflow-hidden">
           {type === "video" ? (
@@ -48,14 +50,14 @@ const DemoItem: React.FC<DemoItemProps> = ({
         </div>
         <div className="flex flex-col gap-2 py-1">
           <div className="flex gap-4 justify-between items-baseline">
-            <div className="flex font-normal text-sm text-[var(--label-muted)] group-hover:text-[var(--label-title)] leading-normal break-all sm:break-words min-[688px]:w-[200px] transition ease-out duration-300">
+            <div className="flex font-normal text-sm text-[var(--label-muted)] group-hover:text-[var(--label-title)] group-focus::text-[var(--label-title)] leading-normal break-all sm:break-words min-[688px]:w-[200px] transition ease-out duration-300">
               {title}
             </div>
-            <div className="font-normal font-mono text-xs text-[var(--label-faint)] group-hover:text-[var(--label-muted)] leading-normal transition ease-out duration-300 w-16 text-end whitespace-nowrap">
-              {date}
+            <div className="font-normal font-mono text-xs text-[var(--label-faint)] group-hover:text-[var(--label-muted)] group-focus:text-[var(--label-muted)] leading-normal transition ease-out duration-300 w-16 text-end whitespace-nowrap">
+              {date.replace(/\s\d{2},/, "")}
             </div>
           </div>
-          <div className="font-normal text-xs text-[var(--label-faint)] group-hover:text-[var(--label-muted)] leading-normal transition ease-out duration-300">
+          <div className="font-normal text-xs text-[var(--label-faint)] group-hover:text-[var(--label-muted)] group-focus:text-[var(--label-muted)] leading-normal transition ease-out duration-300">
             {description}
           </div>
         </div>
@@ -64,7 +66,10 @@ const DemoItem: React.FC<DemoItemProps> = ({
   );
 };
 
-const Craft = () => {
+interface CraftProps extends React.AllHTMLAttributes<HTMLDivElement> {
+  demos: any;
+}
+const Craft: React.FC<CraftProps> = ({ demos }) => {
   const title = "Craft";
   const description = `
   Craftsmanship is what makes a great idea become a great product. Here I explore the possibilities\
@@ -88,46 +93,29 @@ const Craft = () => {
           className="flex flex-col gap-4"
         >
           <Masonry gutter={"16px"}>
-            {/* <DemoItem
-              title="1DottDott DottDottDottDottDottDottDottDottDott"
-              description="A personal website built with Next.js and Tailwind CSS."
-              slug="/craft/dott"
-              date="Jan 2022"
-              type="video"
-              fileLink="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c1d9ad58-32d6-4f4f-b4a6-c9afae50a97a/SpotifyPlayCard.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230124/us-west-2/s3/aws4_request&X-Amz-Date=20230124T092135Z&X-Amz-Expires=86400&X-Amz-Signature=bef67bfcc0bc2c7e99c917ecc984b881c5af34ce0f886d6f2350858541d71de0&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22SpotifyPlayCard.mp4%22&x-id=GetObject"
-            />
-            <DemoItem
-              title="2Dott"
-              description="A personal website built with Next.js and Tailwind CSS."
-              slug="/craft/dott"
-              date="Jan 2022"
-              type="image"
-              fileLink="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/54902305-1ca1-4992-a036-e52238acd5be/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230124/us-west-2/s3/aws4_request&X-Amz-Date=20230124T093124Z&X-Amz-Expires=86400&X-Amz-Signature=2e24094062b58488677533b9bd31b5b69b80b23c083cb8ae486212634e13fc6d&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject"
-            />
-            <DemoItem
-              title="3Dott"
-              description="A personal website built with Next.js and Tailwind CSS."
-              slug="/craft/dott"
-              date="Jan 2022"
-              type="image"
-              fileLink="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/77ecb7f7-9585-45f5-9784-d84f3143d712/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230124/us-west-2/s3/aws4_request&X-Amz-Date=20230124T093601Z&X-Amz-Expires=86400&X-Amz-Signature=f4cbff71047f0c8e62e12a35e94477bf804062eb23838e5b7dfabccbdc6492b0&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject"
-            />
-            <DemoItem
-              title="4Dott"
-              description="A personal website built with Next.js and Tailwind CSS."
-              slug="/craft/dott"
-              date="Jan 2022"
-              type="image"
-              fileLink="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/54902305-1ca1-4992-a036-e52238acd5be/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230124/us-west-2/s3/aws4_request&X-Amz-Date=20230124T093124Z&X-Amz-Expires=86400&X-Amz-Signature=2e24094062b58488677533b9bd31b5b69b80b23c083cb8ae486212634e13fc6d&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject"
-            />
-            <DemoItem
-              title="5Dott"
-              description="A personal website built with Next.js and Tailwind CSS."
-              slug="/craft/dott"
-              date="Jan 2022"
-              type="image"
-              fileLink="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/54902305-1ca1-4992-a036-e52238acd5be/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45/20230124/us-west-2/s3/aws4_request&X-Amz-Date=20230124T093124Z&X-Amz-Expires=86400&X-Amz-Signature=2e24094062b58488677533b9bd31b5b69b80b23c083cb8ae486212634e13fc6d&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject"
-            /> */}
+            {demos.map((demo: any) => (
+              <DemoItem
+                key={demo.slug}
+                title={demo.properties.craftTitle.title[0].plain_text}
+                description={
+                  demo.properties.craftDescription.rich_text[0].plain_text
+                }
+                slug={demo.properties.slug.rich_text[0].plain_text}
+                date={new Date(
+                  demo.properties.craftDate.date.start
+                ).toLocaleString("en-US", {
+                  month: "short",
+                  day: "2-digit",
+                  year: "numeric",
+                })}
+                fileLink={demo.properties.craftCover.files[0].file.url}
+                type={
+                  demo.properties.craftCover.files[0].file.url.includes("mp4")
+                    ? "video"
+                    : "image"
+                }
+              />
+            ))}
           </Masonry>
         </ResponsiveMasonry>
       </main>
@@ -136,3 +124,13 @@ const Craft = () => {
 };
 
 export default Craft;
+
+export const getStaticProps = async () => {
+  const database = await getDemos();
+  return {
+    props: {
+      demos: database,
+    },
+    revalidate: 1,
+  };
+};

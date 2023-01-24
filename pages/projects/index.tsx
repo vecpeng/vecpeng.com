@@ -20,29 +20,32 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   redirect = false,
 }) => {
   return (
-    <Link className="group" href={`${redirect ? link : `/projects/${link}`}`}>
-      <div className="flex flex-col w-full hover:cursor-pointer pt-6 group-last:pb-6">
+    <Link
+      className="group outline-none z-10 "
+      href={`${redirect ? link : `/projects/${link}`}`}
+    >
+      <div className="flex flex-col outline-none w-full pt-6 rounded-md ">
         <div className="flex flex-col sm:flex-row sm:flex gap-2 sm:gap-4">
           <div className="flex flex-col flex-1">
             <div className="flex gap-2 items-center">
-              <div className="font-normal text-[var(--label-muted)] group-hover:text-[var(--label-base)] text-sm text-ellipsis overflow-hidden transition duration-300 ease-out">
+              <div className="font-normal text-[var(--label-muted)] group-hover:text-[var(--label-base)] group-focus:text-[var(--label-base)] text-sm text-ellipsis overflow-hidden transition duration-300 ease-out">
                 {title}
               </div>
               {redirect ? (
-                <RedirectIcon className="text-[var(--label-faint)] group-hover:text-[var(--label-muted)] h-4 w-4 transition duration-300 ease-out" />
+                <RedirectIcon className="text-[var(--label-faint)] group-hover:text-[var(--label-muted)] group-focus:text-[var(--label-muted)] h-4 w-4 transition duration-300 ease-out" />
               ) : (
-                <ArrowRightIcon className="text-[var(--label-faint)] group-hover:text-[var(--label-muted)] h-4 w-4 transition duration-300 ease-out" />
+                <ArrowRightIcon className="text-[var(--label-faint)] group-hover:text-[var(--label-muted)] group-focus:text-[var(--label-muted)] h-4 w-4 transition duration-300 ease-out" />
               )}
             </div>
             <div
-              className={`mt-2 font-normal text-[var(--label-faint)] group-hover:text-[var(--label-muted)] text-xs transition duration-300 ease-out ${
+              className={`mt-2 font-normal text-[var(--label-faint)] group-hover:text-[var(--label-muted)] group-focus:text-[var(--label-muted)] text-xs transition duration-300 ease-out ${
                 description ? "" : "hidden"
               }`}
             >
               {description}
             </div>
           </div>
-          <div className="font-normal font-mono text-[var(--label-faint)] group-hover:text-[var(--label-muted)] w-16 text-start sm:text-end text-sm transition duration-300 ease-out">
+          <div className="font-normal font-mono text-[var(--label-faint)] group-hover:text-[var(--label-muted)] group-focus:text-[var(--label-muted)] w-16 text-start sm:text-end text-sm transition duration-300 ease-out">
             {date}
           </div>
         </div>

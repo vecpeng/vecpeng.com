@@ -1,13 +1,19 @@
+import { useState } from "react";
 import Link from "next/link";
 import Divider from "./UIElements/Divider";
 import Button from "./UIElements/Button";
 import RssIcon from "../public/icons/rss.svg";
+import LinkIcon from "../public/icons/link.svg";
 
-const Footer = () => {
+interface FooterProps extends React.AllHTMLAttributes<HTMLDivElement> {
+  type: "writing" | "craft" | "projects";
+}
+
+const Footer: React.FC<FooterProps> = ({ type }) => {
   return (
     <footer className="flex flex-col items-center justify-center w-full gap-6 mt-40">
       <Divider />
-      <div className="flex w-full items-center justify-between">
+      <div className={`flex w-full items-center justify-between`}>
         <div className="flex items-center gap-2 text-sm text-[var(--label-muted)]">
           <Link
             href="https://twitter.com/dottchen"
@@ -30,15 +36,26 @@ const Footer = () => {
             Email
           </Link>
         </div>
-        <Button
-          className=""
-          text="Subscribe"
-          onClick={() => {
-            window.open("https://dott.love/rss.xml");
-          }}
-        >
-          <RssIcon />
-        </Button>
+        {type === "writing" && (
+          <Button
+            text="Subscribe"
+            onClick={() => {
+              window.open("https://dott.love/rss.xml");
+            }}
+          >
+            <RssIcon />
+          </Button>
+        )}
+        {type === "craft" && (
+          <Button
+            text="Copy Link"
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href);
+            }}
+          >
+            <LinkIcon />
+          </Button>
+        )}
       </div>
     </footer>
   );

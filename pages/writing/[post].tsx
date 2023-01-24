@@ -29,8 +29,8 @@ const Post: React.FC<PostProps> = ({ post, blocks }) => {
   return (
     <>
       <Head>
-        <title>{postTitle} - Dott</title>
-        <meta property="og:title" content={postTitle + " · Dott"} />
+        <title>{postTitle + " - Writing · Dott"}</title>
+        <meta property="og:title" content={postTitle + " - Writing · Dott"} />
         <meta property="og:description" content={postDescription} />
         <meta
           property="og:url"
@@ -45,10 +45,10 @@ const Post: React.FC<PostProps> = ({ post, blocks }) => {
           >
             <ReturnIcon className="h-4 w-4" />
             <div className="text-base font-normal group-hover:decoration-[var(--label-muted)] underline underline-offset-2 decoration-[var(--label-faint)] duration-300 ease-out transition">
-              Back
+              Writing
             </div>
           </Link>
-          <div className="text-[var(--label-muted)] text-base leading-normal mb-4">
+          <div className="font-mono text-[var(--label-muted)] text-base leading-normal mb-4">
             {postDate}
           </div>
         </div>
@@ -62,7 +62,7 @@ const Post: React.FC<PostProps> = ({ post, blocks }) => {
         <section className="flex flex-col gap-4">
           <RenderBlocks blocks={blocks} />
         </section>
-        <Footer />
+        <Footer type="writing" />
       </article>
     </>
   );

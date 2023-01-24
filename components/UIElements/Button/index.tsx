@@ -38,7 +38,7 @@ const Button: React.FC<ButtonProps> = ({
       </div>
       {text && (
         <span
-          className={`text-[var(--label-base)] group-hover:text-[var(--label-title)] group-disabled:text-[var(--label-muted)]`}
+          className={`text-[var(--label-base)] group-hover:text-[var(--label-title)] group-disabled:text-[var(--label-muted)] whitespace-nowrap`}
         >
           {text}
         </span>
