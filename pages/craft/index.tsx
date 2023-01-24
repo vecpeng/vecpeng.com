@@ -24,7 +24,7 @@ const DemoItem: React.FC<DemoItemProps> = ({
   return (
     <li className="list-none">
       <Link
-        href={`/writing/${slug}`}
+        href={`/craft/${slug}`}
         className="group flex flex-col gap-2 rounded-2xl p-2 border border-[var(--bg-border)] bg-[var(--bg-sub)] hover:border-[var(--bg-border-strong)] hover:scale-[102%] focus:border-[var(--bg-border-strong)] focus:scale-[102%] transition ease-out duration-300 outline-none"
         onMouseDown={(e) => e.preventDefault()}
       >
