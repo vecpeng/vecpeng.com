@@ -78,6 +78,9 @@ const Home = () => {
             {currentlyFive}
           </div>
         </div>
+        <div className="flex justify-end cursor-default mt-24 leading-normal text-end text-xs font-normal text-[var(--label-faint)] hover:shadow-highlight hover:text-[var(--label-title)] duration-300 transition ease-out">
+          Love is the answer.
+        </div>
       </main>
     </>
   );
