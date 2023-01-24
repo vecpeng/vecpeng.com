@@ -42,7 +42,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
               {description}
             </div>
           </div>
-          <div className="font-normal text-[var(--label-faint)] group-hover:text-[var(--label-muted)] w-16 text-start sm:text-end text-sm transition duration-300 ease-out">
+          <div className="font-normal font-mono text-[var(--label-faint)] group-hover:text-[var(--label-muted)] w-16 text-start sm:text-end text-sm transition duration-300 ease-out">
             {date}
           </div>
         </div>

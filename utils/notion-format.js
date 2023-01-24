@@ -1,6 +1,8 @@
 import Divider from "@/components/UIElements/Divider";
 import Image from "next/image";
+import Link from "next/link";
 import { twMerge } from "tailwind-merge";
+import { getPageTitleByURL } from "./notion-request";
 
 // General methods
 
@@ -142,6 +144,9 @@ export const RenderBlocks = ({ blocks }) => {
       case "code":
         return <BlockCode text={value.rich_text} key={id} />;
 
+      // case "bookmark":
+      //   return <Bookmark key={id} value={value} />;
+
       default:
         return `Unsupported block (${
           type === "unsupported" ? "unsupported by Notion API" : type
@@ -178,7 +183,7 @@ const SpanText = ({ text, className }) => {
           <a
             href={text.link.url}
             tabIndex={-1}
-            className="hover:decoration-[var(--label-muted)] hover:text-[var(--label-title)] underline underline-offset-2 decoration-[var(--label-faint)] transition duration-150 ease-out outline-none"
+            className="hover:decoration-[var(--label-muted)] hover:text-[var(--label-title)] underline underline-offset-2 decoration-[var(--label-faint)] transitio300 ease-out outline-none"
           >
             {text.content}
           </a>
@@ -320,7 +325,6 @@ const ImageItem = ({ value, id }) => {
         sizes="100vw"
         className="w-full h-full rounded-lg"
       />
-      {/* <img alt={caption} src={imageSrc} /> */}
       {caption && (
         <figcaption className="text-xs mt-2 text-left text-[var(--label-muted)]">
           {caption}
@@ -330,49 +334,21 @@ const ImageItem = ({ value, id }) => {
   );
 };
 
-// export const renderBlock = (block) => {
-//     const { type, id } = block;
-//     const value = block[type];
-//
-//     switch (type) {
-//     case "child_page":
-//         return <p>{value.title}</p>;
-
-//     case "code":
-//         return (
-//             <pre className={styles.pre}>
-//           <code className={styles.code_block} key={id}>
-//             {value.text[0].plain_text}
-//           </code>
-//         </pre>
-//         );
-//     case "file":
-//         const src_file =
-//             value.type === "external" ? value.external.url : value.file.url;
-//         const splitSourceArray = src_file.split("/");
-//         const lastElementInArray = splitSourceArray[splitSourceArray.length - 1];
-//         const caption_file = value.caption ? value.caption[0]?.plain_text : "";
-//         return (
-//             <figure>
-//                 <div className={styles.file}>
-//                     📎{" "}
-//                     <Link href={src_file} passHref>
-//                         {lastElementInArray.split("?")[0]}
-//                     </Link>
-//                 </div>
-//                 {caption_file && <figcaption>{caption_file}</figcaption>}
-//             </figure>
-//         );
-//     case "bookmark":
-//         const href = value.url
-//         return (
-//             <a href={ href } target="_brank" className={styles.bookmark}>
-//                 { href }
-//             </a>
-//         );
-//     default:
-//         return `❌ Unsupported block (${
-//             type === "unsupported" ? "unsupported by Notion API" : type
-//         })`;
-//     }
-// };
+const Bookmark = async ({ value, id }) => {
+  const href = value.url;
+  const title = await getPageTitleByURL(href);
+  const caption = value.caption.length ? value.caption[0].plain_text : "";
+  return (
+    <div className="my-3" key={id}>
+      <Link href={href} target="_brank" className="w-full ">
+        {title || href}
+        {href}
+      </Link>
+      {caption && (
+        <div className="text-xs mt-2 text-left text-[var(--label-muted)]">
+          {caption}
+        </div>
+      )}
+    </div>
+  );
+};

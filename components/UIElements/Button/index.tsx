@@ -24,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({
           hover:cursor-pointer hover:bg-[var(--bg-shade)] hover:border-[var(--bg-border-strong)]
           active:scale-95 outline-none
           disabled:cursor-default disabled:border-[var(--bg-shade)]]
-          transition-all duration-150 ease-out
+          transition-all duration-300 ease-out
           `,
         className
       )}

@@ -6,7 +6,7 @@ import generateRss from "@/utils/rss";
 import Divider from "@/components/UIElements/Divider";
 import Footer from "@/components/Footer";
 import fs from "fs";
-import ArrowLeftIcon from "@/public/icons/arrowLeft.svg";
+import ReturnIcon from "@/public/icons/return.svg";
 
 interface PostProps extends React.AllHTMLAttributes<HTMLDivElement> {
   post: any;
@@ -40,11 +40,11 @@ const Post: React.FC<PostProps> = ({ post, blocks }) => {
       <article className="flex flex-col">
         <div className="flex flex-col lg:flex-row lg:gap-20 lg:-ml-44">
           <Link
-            className="group w-24 flex gap-1 items-center mb-10 lg:mb-4 -mt-16 lg:mt-0 text-[var(--label-base)] hover:text-[var(--label-title)] duration-150 ease-out transition"
+            className="group w-24 flex gap-1 items-center mb-10 lg:mb-4 -mt-16 lg:mt-0 text-[var(--label-base)] hover:text-[var(--label-title)] duration-300 ease-out transition"
             href={"/writing"}
           >
-            <ArrowLeftIcon className="h-4 w-4" />
-            <div className="text-base font-normal group-hover:decoration-[var(--label-muted)] underline underline-offset-2 decoration-[var(--label-faint)] duration-150 ease-out transition">
+            <ReturnIcon className="h-4 w-4" />
+            <div className="text-base font-normal group-hover:decoration-[var(--label-muted)] underline underline-offset-2 decoration-[var(--label-faint)] duration-300 ease-out transition">
               Back
             </div>
           </Link>

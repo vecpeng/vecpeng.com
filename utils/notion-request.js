@@ -42,3 +42,14 @@ export const getBlocks = async (blockId) => {
   }
   return blocks;
 };
+
+export const getPageTitleByURL = async (url) => {
+  fetch(url)
+    .then((response) => response.text())
+    .then((text) => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(text, "text/html");
+      const title = doc.querySelector("title").textContent;
+      return title;
+    });
+};

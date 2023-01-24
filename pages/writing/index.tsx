@@ -33,11 +33,11 @@ const PostItem: React.FC<PostItemProps> = ({
       onMouseDown={(e) => e.preventDefault()}
     >
       <div className="flex gap-4 hover:cursor-pointer w-full pt-6 group-last:pb-6">
-        <div className="font-normal text-[var(--label-faint)] text-sm max-w-[40px] sm:max-w-[80px] w-full mx-auto invisible group-first:visible">
+        <div className="font-normal font-mono text-[var(--label-faint)] text-sm max-w-[40px] sm:max-w-[80px] w-full mx-auto invisible group-first:visible">
           {date.slice(-4)}
         </div>
         <div className="flex flex-col w-full">
-          <div className="flex flex-col sm:flex-row sm:flex gap-2 sm:gap-4">
+          <div className="flex flex-col sm:flex-row sm:flex gap-2 sm:gap-4 items-baseline">
             <div className="flex flex-col flex-1">
               <div className="font-normal text-[var(--label-muted)] group-hover:text-[var(--label-base)] text-sm text-ellipsis overflow-hidden transition duration-300 ease-out">
                 {title}
@@ -50,7 +50,7 @@ const PostItem: React.FC<PostItemProps> = ({
                 {description}
               </div>
             </div>
-            <div className="font-normal text-[var(--label-faint)] group-hover:text-[var(--label-muted)] w-16 text-start sm:text-end text-sm transition duration-300 ease-out">
+            <div className="font-normal font-mono text-[var(--label-faint)] group-hover:text-[var(--label-muted)] w-16 text-start sm:text-end text-xs transition duration-300 ease-out">
               {date.slice(0, -6)}
             </div>
           </div>

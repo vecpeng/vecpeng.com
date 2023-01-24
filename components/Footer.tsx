@@ -11,21 +11,21 @@ const Footer = () => {
         <div className="flex items-center gap-2 text-sm text-[var(--label-muted)]">
           <Link
             href="https://twitter.com/dottchen"
-            className="hover:decoration-[var(--label-muted)] hover:text-[var(--label-title)] underline underline-offset-2 decoration-[var(--label-faint)] duration-150 ease-out transition"
+            className="hover:decoration-[var(--label-muted)] hover:text-[var(--label-title)] underline underline-offset-2 decoration-[var(--label-faint)] duration-300 ease-out transition"
           >
             Twitter
           </Link>
           <span className="cursor-default">·</span>
           <Link
             href="https://github.com/dottchen"
-            className="hover:decoration-[var(--label-muted)] hover:text-[var(--label-title)] underline underline-offset-2 decoration-[var(--label-faint)] duration-150 ease-out transition"
+            className="hover:decoration-[var(--label-muted)] hover:text-[var(--label-title)] underline underline-offset-2 decoration-[var(--label-faint)] duration-300 ease-out transition"
           >
             GitHub
           </Link>
           <span className="cursor-default">·</span>
           <Link
             href="mailto:contact@dott.love"
-            className="hover:decoration-[var(--label-muted)] hover:text-[var(--label-title)] underline underline-offset-2 decoration-[var(--label-faint)] duration-150 ease-out transition"
+            className="hover:decoration-[var(--label-muted)] hover:text-[var(--label-title)] underline underline-offset-2 decoration-[var(--label-faint)] duration-300 ease-out transition"
           >
             Email
           </Link>
