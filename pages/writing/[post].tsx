@@ -56,7 +56,13 @@ const Post: React.FC<PostProps> = ({ post, blocks }) => {
           {postTitle}
         </h1>
         <Divider />
-        <div className="flex flex-col md:flex-row mt-32 mb-32 md:mb-16 md:-ml-[112px] text-[var(--label-title)] before:-mb-6 md:before:mb-0 md:leading-normal before:-ml-9 md:before:ml-0 md:before:-mt-3 before:content-['“'] before:text-[var(--label-title)] before:text-6xl md:before:text-8xl md:before:mr-4">
+        <div
+          className="my-32 flex flex-col text-[var(--label-title)] leading-normal
+        md:flex-row md:mb-16 md:-ml-[62px]
+        before:content-['″'] before:text-[var(--label-title)]
+        md:before:mb-0 md:before:ml-0 md:before:-mt-3 md:before:mr-4 md:before:text-8xl 
+        before:-mb-6 before:-ml-1  before:text-6xl"
+        >
           {postDescription}
         </div>
         <section className="flex flex-col gap-4">
