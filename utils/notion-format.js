@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Divider from "@/components/UIElements/Divider";
 import Image from "next/image";
 import Link from "next/link";
@@ -317,7 +318,7 @@ const ImageItem = ({ value, id }) => {
   const caption = value.caption.length ? value.caption[0].plain_text : "";
   return (
     <figure key={id} className="my-3">
-      <Image
+      <img
         alt={caption}
         src={imageSrc}
         width="0"
