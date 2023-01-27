@@ -16,7 +16,7 @@ const Craft: React.FC = () => {
   return (
     <>
       <Head>
-        <title>{craftMetaData.title + " - Craft · Dott"}</title>
+        {/* <title>{craftMetaData.title} - Craft · Dott</title> */}
         <meta
           property="og:title"
           content={craftMetaData.title + " - Craft · Dott"}

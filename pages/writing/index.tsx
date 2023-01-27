@@ -89,7 +89,6 @@ interface WritingProps extends React.AllHTMLAttributes<HTMLDivElement> {
   posts: any;
 }
 const Writing: React.FC<WritingProps> = ({ posts }) => {
-  const title = "Writing";
   const description = `
   Knowledge is only internalized when it can be written down. I gather my thoughts,\
   ideas and sometimes carefully written articles on various topics here.
@@ -122,11 +121,11 @@ const Writing: React.FC<WritingProps> = ({ posts }) => {
   return (
     <>
       <Head>
-        <title>{title} - Dott</title>
+        <title>Writing - Dott</title>
       </Head>
       <main className="flex flex-col gap-8 w-full h-full">
         <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">
-          {title}
+          Writing
         </div>
         <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
           {description}

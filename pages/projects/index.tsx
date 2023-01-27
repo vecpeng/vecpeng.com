@@ -56,7 +56,6 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 };
 
 const Projects = () => {
-  const title = "Projects";
   const description = `
   Here are all of my past projects. Some silly, some serious, some experimental, and some are just\
   plain fun. I hope you enjoy them as much as I do.
@@ -65,7 +64,7 @@ const Projects = () => {
   return (
     <>
       <Head>
-        <title>{title} - Dott</title>
+        <title>Projects - Dott</title>
       </Head>
       <main className="flex flex-col gap-8 w-full h-full">
         <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">

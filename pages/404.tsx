@@ -3,11 +3,10 @@ import Button from "@/components/UIElements/Button";
 import ReturnIcon from "@/public/icons/return.svg";
 
 const Custom404 = () => {
-  const title = "404";
   return (
     <>
       <Head>
-        <title>{title} - Dott</title>
+        <title>404 - Dott</title>
       </Head>
       <main className="flex flex-col items-center justify-center w-full h-full gap-8">
         <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">

@@ -70,7 +70,6 @@ interface CraftProps extends React.AllHTMLAttributes<HTMLDivElement> {
   demos: any;
 }
 const Craft: React.FC<CraftProps> = ({ demos }) => {
-  const title = "Craft";
   const description = `
   Craftsmanship is what makes a great idea become a great product. Here I explore the possibilities\
   of polished interfaces and delightful interactions.
@@ -79,11 +78,11 @@ const Craft: React.FC<CraftProps> = ({ demos }) => {
   return (
     <>
       <Head>
-        <title>{title} - Dott</title>
+        <title>Craft - Dott</title>
       </Head>
       <main className="flex flex-col gap-8 w-full h-full">
         <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">
-          {title}
+          Craft
         </div>
         <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
           {description}

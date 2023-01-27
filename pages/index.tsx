@@ -1,12 +1,8 @@
 import Head from "next/head";
 import Divider from "@/components/UIElements/Divider";
-import { Inter } from "@next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { motion } from "framer-motion";
 
 const Home = () => {
-  const title = "Dott's Blog";
-
   const greeting = "Hey! I'm Dott.";
   const descriptionOne = `
   A software product designer crafting user interfaces. Coding my own design to bridge the gap\
@@ -41,46 +37,70 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>{title} - Dott</title>
+        <title>Dott&apos;s Blog - Dott</title>
       </Head>
       <main className="flex flex-col gap-8 w-full h-full">
-        <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">
+        <motion.div
+          initial={{ opacity: 0, x: -24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ ease: "easeOut", duration: 1.5 }}
+          className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight"
+        >
           {greeting}
-        </div>
-        <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
-          {descriptionOne}
-        </div>
-        <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
-          {descriptionTwo}
-        </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ ease: "easeOut", duration: 1.5, delay: 1 }}
+          className="flex flex-col gap-8"
+        >
+          <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
+            {descriptionOne}
+          </div>
+          <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
+            {descriptionTwo}
+          </div>
+        </motion.div>
         {/* <Divider />
         <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">
-          Selected
-        </div> */}
-        <Divider />
-        <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">
-          Currently
-        </div>
-        <div className="flex flex-col gap-4">
-          <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
-            {currentlyOne}
+        Selected
+      </div> */}
+        <motion.div
+          initial={{ opacity: 0, x: -24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ ease: "easeOut", duration: 1.5, delay: 2 }}
+          className="flex flex-col gap-8"
+        >
+          <Divider />
+          <div className="text-base font-medium text-[var(--label-title)] leading-7 shadow-highlight">
+            Currently
           </div>
-          <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
-            {currentlyTwo}
+          <div className="flex flex-col gap-4">
+            <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
+              {currentlyOne}
+            </div>
+            <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
+              {currentlyTwo}
+            </div>
+            <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
+              {currentlyThree}
+            </div>
+            <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
+              {currentlyFour}
+            </div>
+            <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
+              {currentlyFive}
+            </div>
           </div>
-          <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
-            {currentlyThree}
-          </div>
-          <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
-            {currentlyFour}
-          </div>
-          <div className="text-sm font-normal text-[var(--label-muted)] leading-6">
-            {currentlyFive}
-          </div>
-        </div>
-        <div className="flex justify-end cursor-default mt-24 leading-normal text-end text-xs font-normal text-[var(--label-faint)] hover:shadow-highlight hover:text-[var(--label-title)] duration-300 transition ease-out">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ ease: "easeOut", duration: 1.5, delay: 3 }}
+          className="flex justify-end cursor-default mt-24 leading-normal text-end text-xs font-normal text-[var(--label-faint)] hover:shadow-highlight hover:text-[var(--label-title)] duration-300 transition ease-out"
+        >
           Love is the answer.
-        </div>
+        </motion.div>
       </main>
     </>
   );

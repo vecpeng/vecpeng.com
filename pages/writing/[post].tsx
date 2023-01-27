@@ -7,6 +7,7 @@ import Divider from "@/components/UIElements/Divider";
 import Footer from "@/components/Footer";
 import fs from "fs";
 import ReturnIcon from "@/public/icons/return.svg";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 interface PostProps extends React.AllHTMLAttributes<HTMLDivElement> {
   post: any;
@@ -25,11 +26,13 @@ const Post: React.FC<PostProps> = ({ post, blocks }) => {
     year: "numeric",
   });
   const postSlug = post.properties.slug.rich_text[0].plain_text;
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 400, damping: 90 });
 
   return (
     <>
       <Head>
-        <title>{postTitle + " - Writing · Dott"}</title>
+        {/* <title>{postTitle} - Writing · Dott</title> */}
         <meta property="og:title" content={postTitle + " - Writing · Dott"} />
         <meta property="og:description" content={postDescription} />
         <meta
@@ -37,6 +40,10 @@ const Post: React.FC<PostProps> = ({ post, blocks }) => {
           content={"http://dott.love/writing/" + postSlug}
         />
       </Head>
+      <motion.div
+        style={{ scaleX }}
+        className="fixed top-0 left-0 right-0 origin-left h-0.5 bg-[var(--label-base)] z-50"
+      />
       <article className="flex flex-col">
         <div className="flex flex-col lg:flex-row lg:gap-20 lg:-ml-44">
           <Link
