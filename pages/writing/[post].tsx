@@ -32,7 +32,7 @@ const Post: React.FC<PostProps> = ({ post, blocks }) => {
   return (
     <>
       <Head>
-        {/* <title>{postTitle} - Writing · Dott</title> */}
+        <title>{postTitle} - Writing · Dott</title>
         <meta property="og:title" content={postTitle + " - Writing · Dott"} />
         <meta property="og:description" content={postDescription} />
         <meta
@@ -42,7 +42,7 @@ const Post: React.FC<PostProps> = ({ post, blocks }) => {
       </Head>
       <motion.div
         style={{ scaleX }}
-        className="fixed top-0 left-0 right-0 origin-left h-0.5 bg-[var(--label-base)] z-50"
+        className="fixed top-0 left-0 right-0 origin-left h-1 bg-[var(--label-base)] z-50"
       />
       <article className="flex flex-col">
         <div className="flex flex-col lg:flex-row lg:gap-20 lg:-ml-44">
