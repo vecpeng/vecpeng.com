@@ -1,30 +1,32 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import { useTheme } from "next-themes";
-import Router from "next/router";
+import Link from "next/link";
+import Router, { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
-import * as ScrollArea from "@radix-ui/react-scroll-area";
-import * as Popover from "@radix-ui/react-popover";
-import NavigationButton from "./components/NavigationButton";
-import SpotifyCard from "./components/SpotifyCard";
-import {
-  getCurrentPlayingTrack,
-  getAccessToken,
-  getUserQueue,
-} from "@/utils/spotify-request";
-import HomeIcon from "@/public/icons/home.svg";
-import CraftIcon from "@/public/icons/paint.svg";
+
 import WritingIcon from "@/public/icons/article.svg";
 import FolderCloseIcon from "@/public/icons/folderClose.svg";
 import FolderOpenIcon from "@/public/icons/folderOpen.svg";
-import TwitterIcon from "@/public/icons/twitter.svg";
 import GithubIcon from "@/public/icons/github.svg";
+import HomeIcon from "@/public/icons/home.svg";
 import MailIcon from "@/public/icons/mail.svg";
+import MusicOneIcon from "@/public/icons/musicOne.svg";
+import MusicTwoIcon from "@/public/icons/musicTwo.svg";
+import CraftIcon from "@/public/icons/paint.svg";
 import SpotifyIcon from "@/public/icons/spotify.svg";
 import ThemeDarkIcon from "@/public/icons/themeDark.svg";
 import ThemeLightIcon from "@/public/icons/themeLight.svg";
-import MusicOneIcon from "@/public/icons/musicOne.svg";
-import MusicTwoIcon from "@/public/icons/musicTwo.svg";
+import TwitterIcon from "@/public/icons/twitter.svg";
+import {
+  getAccessToken,
+  getCurrentPlayingTrack,
+  getUserQueue
+} from "@/utils/spotify-request";
+import * as Popover from "@radix-ui/react-popover";
+import * as ScrollArea from "@radix-ui/react-scroll-area";
+
+import NavigationButton from "./components/NavigationButton";
+import SpotifyCard from "./components/SpotifyCard";
 
 const NavDivider = () => {
   return <div className="flex h-10 w-px diveder-background opacity-60"></div>;
@@ -32,7 +34,7 @@ const NavDivider = () => {
 
 const NavigationBar = () => {
   // Page Navigation
-  const [currentPage, setCurrentPage] = useState("/");
+  let router = useRouter();
   const [isHomeActive, setIsHomeActive] = useState(false);
   const [isCraftActive, setIsCraftActive] = useState(false);
   const [isWritingActive, setIsWritingActive] = useState(false);
@@ -50,27 +52,24 @@ const NavigationBar = () => {
       console.log("Invalid navigation name.");
     }
   };
-  useEffect(() => {
-    setCurrentPage(window.location.pathname);
-  });
 
   useEffect(() => {
-    if (window.location.pathname === "/") {
+    if (router.pathname === "/") {
       setIsHomeActive(true);
       setIsCraftActive(false);
       setIsWritingActive(false);
       setIsProjectsActive(false);
-    } else if (window.location.pathname === "/craft") {
+    } else if (router.pathname === "/craft") {
       setIsHomeActive(false);
       setIsCraftActive(true);
       setIsWritingActive(false);
       setIsProjectsActive(false);
-    } else if (window.location.pathname === "/writing") {
+    } else if (router.pathname === "/writing") {
       setIsHomeActive(false);
       setIsCraftActive(false);
       setIsWritingActive(true);
       setIsProjectsActive(false);
-    } else if (window.location.pathname === "/projects") {
+    } else if (router.pathname === "/projects") {
       setIsHomeActive(false);
       setIsCraftActive(false);
       setIsWritingActive(false);
@@ -78,7 +77,7 @@ const NavigationBar = () => {
     } else {
       return;
     }
-  }, [currentPage]);
+  }, [router]);
 
   // Social
   const handleSocialLink = (name: string) => {
@@ -178,10 +177,10 @@ const NavigationBar = () => {
     <footer
       className={`fixed flex w-full bottom-6 items-center justify-center z-30 
       ${
-        currentPage === "/" ||
-        currentPage === "/craft" ||
-        currentPage === "/writing" ||
-        currentPage === "/projects"
+        router.pathname === "/" ||
+        router.pathname === "/craft" ||
+        router.pathname === "/writing" ||
+        router.pathname === "/projects"
           ? ""
           : "hidden"
       }
